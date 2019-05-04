@@ -1,0 +1,6 @@
+things to do:
+- give a good reason about maths for the precise relationship between various notions of symmetry
+- go through references/cites and add Definition/Theorem/etc. references 
+- add a discussion on fairness somewhere
+- put honours thesis on gitlab (after adding comment about proof being communicated via email from Noah Stein). 
+- would have to define groupid, wreath product, group, bijection, homomorphism, antihomomorphism, isomorphism, automorphism, 

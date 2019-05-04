@@ -1,0 +1,116 @@
+\documentclass[a4paper, 11pt]{article}
+\pagestyle{plain}
+
+%\usepackage{a4wide} \addtolength{\topmargin}{-1in} \addtolength{\textheight}{1.5in}
+%	\addtolength{\oddsidemargin}{-0.2in}
+%    \addtolength{\evensidemargin}{-0.3in}
+%    \addtolength{\textwidth}{0.4in}
+%    \parskip = 3mm
+%    \parindent = 0mm
+ 
+\usepackage{geometry}
+\geometry{margin=15mm} 
+    
+\usepackage[colorlinks]{hyperref}
+\usepackage{comment}
+\usepackage{amsmath, amsfonts, amsthm}
+%\usepackage[round, comma]{natbib}
+\usepackage{cite}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{sgamevar}
+\usepackage{enumitem}  \setenumerate[0]{label=(\roman*)}
+\usepackage{yfonts}
+%\setlist{nolistsep}
+
+\allowdisplaybreaks
+
+\DeclareMathOperator*{\isom}{Isom}
+\DeclareMathOperator*{\bij}{Bij}
+\DeclareMathOperator*{\Aut}{Aut}
+\newcommand{\id}{\text{id}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\posreals}{\mathbb{R}^+}
+
+%\newcommand{\msp}[1]{$\delta(#1)$}
+\newcommand{\msp}[2]{\delta(#1)_{#2}}
+
+%\newcommand{\red}[1]{{\color{red}#1}}
+
+\let\oldproofname=\proofname
+\renewcommand{\proofname}{\rm\bf{\oldproofname}}
+
+%theorem style to be used..
+\newtheoremstyle{paper}
+{3pt}% space below
+{3pt}% space above
+{}% body font
+{}% indent amount
+{\bfseries}% theorem head font
+{:}% punctuation after heading
+{.5em}% space after heading
+{}% head spec
+
+\theoremstyle{paper}
+%\swapnumbers
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{puzzle}[theorem]{Puzzle}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\begin{document}
+    \title{Notions of Anonymity, Fairness and Symmetry \\ for Finite Strategic-Form Games}
+    \author{Nicholas Ham\footnote{{\it Email:} \href{mailto:contact@n-ham.com}{\tt contact@n-ham.com}}}
+	\maketitle
+
+	%\let\thefootnote\relax\footnote{\hspace{-15pt}Nicholas Ham\\ School of Mathematics \& Physics, University of Tasmania,\\ Email: \href{mailto:contact@n-ham.com}{contact@n-ham.com}}
+
+    \begin{abstract}
+    		In this paper we survey the various notions of anonymity and symmetry for finite strategic-form games that are present in the literature, and discuss notions of fairness; show that game bijections and game isomorphisms form groupoids; introduce matchings as a convenient characterisation of strategy triviality; and outline how to construct and partially order parameterised (symmetric) games with numerous examples that range all combinations of surveyed symmetry notions, which when combined with other results in this paper gives the precise relationship between the various symmetry notions.
+    		
+    		\textbf{Keywords:} Game Theory, Symmetric Games, Game Automorphisms.
+    		
+    		\textbf{MSC:} 
+    		91A05, %2-person games
+    		91A06, %$n$-person games, $n>2$
+    		91A10, %Noncooperative games
+    		91A30, %Utility theory for games
+    		91A70, %Spaces of games
+    		91B16. %Utility theory
+    \end{abstract}
+    
+    \tableofcontents
+    
+    \input{section-intro.tex}
+    \input{section-background.tex}
+    \input{section-label-dependent-symmetric-games.tex}
+    \input{section-bijections.tex}
+    \input{section-label-independent-symmetric-games.tex}
+    
+    \section*{Acknowledgements}
+    		Part of the time spent conducting research for and typesetting this paper was supported by a Tasmania Graduate Research Scholarship (186). The author would especially like to express his gratitude towards:
+    		\begin{enumerate}
+    			\item Des FitzGerald, without whom the author would unlikely have been able to explore symmetric games for the thesis component of his honours year at the University of Tasmania, and who has been useful for advice since;
+	    		\item Jeremy Sumner for proof-reading early drafts with a number of useful suggestions;
+	    		\item Noah Stein who introduced the author to his doctoral work at MIT (note the author had already identified and pointed out the mistake by Maskin and Dasgupta, and was working on the label-independent notions at the time of coming across Stein on the website reddit.com), and who answered a number of questions from the author, many of which were rather stupid in hindsight. Note the author purposefully omitted Stein from the acknowledgements in previous versions of this paper uploaded to the arXiv due to the author's uncertainty about whether the author would be dismissed, especially prior to the author making the discussions on fairness more concrete and precise;
+	    		\item Asaf Plan who identified a mistake with the proof of Theorem \ref{basicsymequivthm}, which the author has since corrected (the author apologises that he forgot to acknowledge Asaf in at least one version uploaded to the arXiv since Asaf pointed the mistake out);
+	    		\item several anonymous referees whose useful comments have helped improve the exposition of this paper along with suggesting a number of relevant references; and
+	    		\item Martin Osborne, whose {\tt sgamevar} {\LaTeX} style file, see \cite{SGAMESTY}, was used for the example games throughout this paper.
+    		\end{enumerate} 
+    		
+    		%The author would also like to thank the people who check whether people are not being given an actual choice with things, being lied to, misled, held back for the wrong reasons, of if there are threats when accusations are made against people while almost everyone knows there are types of horrible abuse occurring around the globe and nothing is done about it when people are identified as one of the perpetrators, especially those voluntarily making threats, voluntarily helping carry them out, and/or voluntarily engaging in the wrong kind of abusing other people, animals and/or things. It is not okay for people to be stuck in abusive relationships, whether the abuse has ceased or not. The use of this work is gifted to people who are actually helping put an end to the global hostage crisis and helping with rescuing people from the wrong kinds of abuse. 
+    
+    \nocite{GAP4} 
+    %\bibliographystyle{plainnat}
+    \bibliographystyle{plain}
+    \bibliography{references}
+\end{document}

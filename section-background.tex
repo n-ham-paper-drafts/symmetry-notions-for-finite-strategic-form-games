@@ -1,0 +1,337 @@
+\section{Background} \label{sec:background}
+	Let $N = \{1, \ldots, n\}$ where $n \geq 2$ and let $\{A_i: i \in N\}$ be a collection of non-empty sets. To simplify notation:
+	\begin{enumerate}
+		\item We denote the Cartesian product of $\{A_i: i \in N\}$, ie. $\times_{i \in N}A_i$, as $A$;
+		\item For each $i \in N$ we denote $\times_{j \in N-\{i\}} A_j$ as $A_{-i}$;
+		\item For each $s \in \times_{i \in N}A_i$ and $i \in N$ we denote the element of $A_i$ used in $s$, which is position $i$ of $s$, as $s_i$;
+		\item For each $i \in N$ and $s = (s_1, \ldots, s_{i-1}, s_i, s_{i+1}, \ldots, s_n) \in A$ we denote $(s_1, \ldots, s_{i-1}, s_{i+1}, \ldots, s_n) \in A_{-i}$ as $s_{-i}$;
+		\item For each $s_i \in A_i$ and $s_{-i} = (s_1, \ldots, s_{i-1}, s_{i+1}, \ldots, s_n) \in A_{-i}$ we denote $(s_1, \ldots, s_{i-1}, s_i, s_{i+1}, \ldots, s_n) \in \times_{i \in N} A_i$ as $(s_i, s_{-i})$ or $s$, whichever is contextually convenient;
+		\item For each $k \in N$ and distinct $i_1, \ldots, i_k \in N$ we denote $N - \{i_1, \ldots, i_k\}$ as $N_{-i_1 - \ldots - i_k}$, for example $N_{-1 - \ldots - k} = \set{k+1, \ldots, n}$;
+		\item For each $k \in N-\{n\}$ and distinct $i_1, \ldots, i_k \in N$ we denote ${\left({(A_{-i_1})}_{-i_2}\ldots\right)}_{-i_k} = A_{{-i_1}_{{-i_2}_{\ldots_{-i_k}}}} = \times_{i \in N-\{i_1, \ldots, i_k\}}A_i$ as $A_{-i_1 - \ldots - i_k}$; and
+		\item For each $s \in A$, $k \in N-\{n\}$ and distinct $i_1, \ldots, i_k \in N$ we denote ${\left({(s_{-i_1})}_{-i_2}\ldots\right)}_{-i_k} = s_{{-i_1}_{{-i_2}_{\ldots_{-i_k}}}} \in A_{-i_1 - \ldots - i_k} = \times_{i \in N-\{i_1, \ldots, i_k\}}A_i$ as $s_{-i_1 - \ldots - i_k}$;
+		\item For each $k \in N-\{n\}$, distinct $i_1, \ldots, i_k, j \in N$ and $s_{-i_1 - \ldots - i_k} \in A_{-i_1 - \ldots - i_k}$ we denote the element of $A_j$ used in $s_{-i_1 - \ldots - i_k}$ as ${(s_{-i_1 - \ldots - i_k})}_j$, note if $j>\min\set{i_l: l\in\{1, \ldots, k\}}$ then this will not be position $j$ of the $(n-k)$-tuple $s_{-i_1 - \ldots - i_k}$.
+	\end{enumerate}
+	
+	A \textit{relation} on $\set{A_i: i \in N}$ is a subset $R$ of their Cartesian product $\times_{i \in N}A_i$. Let $i \in N$, we say that $R$ is \textit{$i$-total} when for each $s_i \in A_i$ there exists $s_{-i} \in A_{-i}$ such that $(s_i, s_{-i}) \in R$, and \textit{$i$-unique} when $(s_i, s_{-i}), (s_i, s_{-i}') \in R$ implies $s_{-i} = s_{-i}'$.
+	
+	Given sets $X$ and $Y$, a \textit{function from $X$ to $Y$} is a functional left-total binary relation $f \subseteq X\times{Y}$. We denote the set of functions from $X$ to $Y$ as $Y^X$. Let $f \in Y^X$:
+	\begin{enumerate}
+		\item Since $f$ is functional, for each $x \in X$ we may denote by $f(x)$ the unique element in $Y$ such that $(x, f(x)) \in f$;
+		\item The \textit{image} of $f$ is the set $\set{f(x): x \in X}$, which we denote as $f(X)$; and
+		\item If $Y=X$ then the function that maps each element of $X$ to itself acts as an identity under composition, it is typically referred to as \textit{the identity function} and denoted as $\id_X$. 
+	\end{enumerate}
+	
+	A function $f \in Y^X$ is referred to as:
+	\begin{enumerate}
+		\item \textit{injective}, or as an \textit{injection}, when for each $x, x' \in X$, $f(x) = f(x')$ if and only if $x = x'$;
+		\item \textit{surjective}, or as a \textit{surjection}, when $f(X) = Y$; and
+		\item \textit{bijective}, or as a \textit{bijection}, when it is both injective and surjective. 
+	\end{enumerate}
+	
+	Note that the bijections from a set to itself form a group under composition.
+	
+	A function $f \in \reals^{\reals}$ is referred to as:
+	\begin{enumerate}
+		\item a \textit{strictly increasing function} when for each $x, x' \in \mathbb{R}$, $x < x'$ if and only if $f(x) < f(x')$; and
+		\item a \textit{positive linear transformation} when there exists $\alpha \in \posreals$ and $\beta \in \reals$ such that $f(x) = \alpha{x} + b$ for all $x \in X$.
+	\end{enumerate}
+	
+	Note that the strictly increasing functions are a subgroup of the bijections from $\reals$ to $\reals$, and that the positive linear transformations are a subgroup of the strictly increasing functions. For proofs see \cite[Propositions 2.2.4 and 2.2.6]{ham2011honoursthesis}.
+	
+	A \textit{strategic-form game}, or just \textit{game} when contextually unambiguous, consists of a set $N = \{1, \ldots, n\}$ of $n \geq 2$ \textit{players}, or \textit{player names}, and for each player $i \in N$, a non-empty set $A_i$ of \textit{strategies} and a \textit{utility function} $u_i:A\rightarrow\mathbb{R}$, where $A$ denotes the set of \textit{strategy profiles} $\times_{i \in N}A_i$. We denote such a game as the triple $(N, A, u)$, where $u = (u_i)_{i \in N}$. If there exists $m \in \mathbb{Z}^+$ such that $|A_i| = m$ for all $i \in N$ then $(N, A, u)$ is called an $m$-\textit{strategy} game. A game $(N, A, u)$ is \textit{finite} when both $N$ is finite and $A_i$ is finite for all $i \in N$. 
+	
+	In this paper we will only concern ourselves with finite games, consequently all player sets and pure strategy sets are implicitly finite. It is noted in Mas-Collel, Whinston and Green \cite[Proposition 3.C.1]{Mas1995microeconomic} that for a set $X$ any rational preference relation may be described by some utility function, it is also worth checking Sections 3.B and 3.C, especially the definition of a rational preference relation (Definition 3.B.1). This would be a useful place to begin when trying to explore notions of symmetry and fairness for non-finite games (so a [possibly] non-finite number of players and/or [possibly] non-finite strategy sets, with at least one non-finite set involved). %watch out for Can't Or/Cantor and Kant/Can't, what's the diagonal length of a triangle with straight side lengths of 1? Why did the chicken walk down the mobius strip? All pointed out independently and most likely originally by the actual Nick Ham, who typed this comment.
+	
+	Note that the strategy profiles, and consequently also the utility functions, of a game have an implicit ordering of the players. We refer to the place of each player in this order as their \textit{position}. For games when the player names are $\{1, \ldots, n\}$, unless otherwise specified, the names and positions coincide.
+	
+	A game may be displayed pictorially as a list of matrices. We list the strategies from players $n-1$ and $n$ along the rows and columns respectively (or from the players in positions $n-1$ and $n$ where the player names are not $\{1, \ldots, n\}$), and for games with more than two players have a separate matrix for each strategy combination of the remaining players $\{1, \ldots, n-2\}$. Each strategy profile $s \in A$ corresponds to a unique cell in one of the matrices where the payoffs are written in the form $\bigl(u_i(s)\bigr)_{i \in N}$. For an example, see Example \ref{fullsymeg}.
+	
+	\begin{example} \label{fullsymeg} 3-player 2-strategy game.
+		\begin{center}
+  		\begin{game}{2}{2}[$(a,,)$]
+    			     \>  $a$      \>  $b$      \\
+    			$a$  \>  $1,1,1$  \>  $2,2,3$  \\
+    			$b$  \>  $2,3,2$  \>  $4,5,5$  
+  		\end{game}
+  		\hspace*{5mm}
+  		\begin{game}{2}{2}[$(b,,)$]
+       			 \>  $a$      \>  $b$      \\
+    			$a$  \>  $3,2,2$  \>  $5,4,5$  \\
+    			$b$  \>  $5,5,4$  \>  $6,6,6$ 
+  		\end{game}
+		\end{center}
+		We find the payoff to player $3$ for the strategy profile $(b, b, a) \in A$ as follows: reading the strategy profile from left to right, player $1$ has chosen the second matrix, player $2$ has chosen the second row and player $3$ has chosen the first column, the third value of which is the payoff to player $3$. Hence $u_3(b,b,a) = 4$.
+	\end{example}
+	
+	The reader should note that the \textit{usual convention} in most of the game theory literature is to have players $1$ and $2$ along the rows and columns respectively, and for games with more than two players have a separate matrix for each strategy combination of the remaining players $\{3, \ldots, n\}$. The author considers the usual convention objectively inferior to the convention used in this paper, primarily when finding the payoffs for a given strategy profile. 
+		
+	The normal and convenient convention is to read an $n$-tuple left-to-right, when reading a strategy profile left-to-right to find the payoffs for players:
+	\begin{enumerate}
+		\item using the usual convention first one finds the correct row and column in the first matrix, then one finds the correct matrix while trying to recall what the correct row and column are, which is incredibly tedious, frustrating and error-prone; whereas
+		\item using the convention in this paper one first finds the correct matrix, then one finds the correct row and column, which also has one indexing the payoff matrices using the normal convention for matrices. 
+	\end{enumerate} 
+	
+	A possible solution with the usual convention when finding the payoffs for a given strategy profile is to read strategy profiles left-to-right from player $3$ through to player $n$, and then players $1$ and $2$. The author still finds this less efficient and more tedious, frustrating and error-prone than simply changing to the convention used in this paper.
+	
+	Given a set $X$, we denote the set of probability distributions over $X$ as $\Delta(X)$, ie. $\Delta(X) = \{\sigma \in [0,1]^X: \Sigma_{x \in X}\sigma(x) = 1\}$. Need to clean this up.
+	
+	Given a game $\Gamma = (N, A, u)$, for each player $i \in N$, the \textit{mixed strategy set for player $i$} is the set of probability distributions over $A_i$, ie. $\Delta(A_i) = \{\sigma_i \in [0,1]^{A_i}: \Sigma_{s_i \in A_i} \sigma_i(s_i) = 1\}$. The set of \textit{mixed strategy profiles} is the Cartesian product of the players' mixed strategy sets, ie. $\times_{i \in N}\Delta(A_i)$, note that this is not the same as the probability distributions over $A$, ie. $\times_{i \in N}\Delta(A_i) \neq \Delta(A)$. To simplify notation we shall denote $\times_{i \in N}\Delta(A_i)$ as $\nabla(A)$. Given our notation from earlier, for each $i \in N$ we have $\nabla(A)_{-i} = \times_{j \in N-\{i\}}\Delta(A_j)$. 
+	
+	Define $f:\nabla(A)\rightarrow\Delta(A)$ where for each $\sigma = (\sigma_1, \ldots, \sigma_n) \in \nabla(A)$, we let $f(\sigma)(s) = f(\sigma_1, \ldots, \sigma_n)(s) = \prod_{i \in N}\sigma_i(s_i)$ for all $s \in A$. 
+	
+	Note that for each $k \in N-\{n\}$, distinct $i_1, \ldots, i_k \in N$, $\sigma \in \nabla(A)$ and $s \in A$:
+	\begin{align*}
+		f(\sigma_{-i_1 - \ldots - i_{k-1}})(s_{-i_1 - \ldots - i_{k-1}}) &= \prod_{j \in N_{-i_1 - \ldots - i_{k-1}}}{(\sigma_{-i_1 - \ldots - i_{k-1}})}_j({(s_{-i_1 - \ldots - i_{k-1}})}_j) \\
+		&= \sigma_{i_k}(s_{i_k})\prod_{j \in N_{-i_1 - \ldots - i_k}}{(\sigma_{-i_1 - \ldots - i_k})}_j({(s_{-i_1 - \ldots - i_k})}_j) \\
+		&= \sigma_{i_k}(s_{i_k})f(\sigma_{-i_1 - \ldots - i_k})(s_{-i_1 - \ldots - i_k}). \\
+	\end{align*}
+	
+	\begin{proposition}
+		The function $f$ defined above satisfies:
+		\begin{enumerate}
+			\item For each $\sigma = (\sigma_1, \ldots, \sigma_n) \in \nabla(A)$, $f(\sigma) = f(\sigma_1, \ldots, \sigma_n) \in \Delta(A)$ (ie. $f$ is well-defined);
+			\item For each $\sigma, \sigma' \in \nabla(A)$, $f(\sigma) = f(\sigma')$ if and only if $\sigma = \sigma'$ (ie. $f$ is injective); and
+			\item $f\left(\nabla(A)\right) \subset \Delta(A)$ (ie. $f$ is not surjective).
+		\end{enumerate}
+		
+		\begin{proof}
+			\begin{enumerate}
+				\item First note that:
+				\begin{align*}
+					\sigma_i(s_i) &\geq 0 \text{ for all } i \in N, s_i \in A_i \\
+					\Rightarrow f(\sigma)(s) = f(\sigma_1, \ldots, \sigma_n)(s) = \prod_{i \in N} \sigma_i(s_i) &\geq 0 \text{ for all } s \in A.
+				\end{align*}
+				Also we have:
+				\begin{align*}
+					\sum_{s \in A}f(\sigma)(s) = \sum_{s \in A}f(\sigma_1, \ldots, \sigma_n)(s) &= \sum_{s \in A}\prod_{i \in N}\sigma_i(s_i) \\
+					&= \sum_{s \in A}\left[\sigma_1(s_1)f(\sigma_{-1})(s_{-1})\right] \\
+					&= \sum_{s_1 \in A_1}\sum_{s_{-1} \in A_{-1}}\left[\sigma_1(s_1)f(\sigma_{-1})(s_{-1})\right] \\
+					&= \sum_{s_1 \in A_1}\left[\sigma_1(s_1)\left(\sum_{s_{-1} \in A_{-1}}f(\sigma_{-1})(s_{-1})\right)\right] \\
+					&= \left(\sum_{s_1 \in A_1}\sigma_1(s_1)\right)\left(\sum_{s_{-1} \in A_{-1}}f(\sigma_{-1})(s_{-1})\right) \\
+					&= \sum_{s_{-1} \in A_{-1}}f(\sigma_{-1})(s_{-1}) \\
+					&= \sum_{s_{-1} \in A_{-1}} \left[\sigma_2({(s_{-1})}_2)f(\sigma_{-1})(s_{-1})\right] \\
+					&= \sum_{s_2 \in A_2}\sum_{s_{-1-2} \in A_{-1-2}} \left[\sigma_2(s_{2})f(\sigma_{-1-2})(s_{-1-2})\right] \\
+					&= \left(\sum_{s_2 \in A_2} \sigma_2(s_{2})\right) \left(\sum_{s_{-1-2} \in A_{-1-2}} f(\sigma_{-1-2})(s_{-1-2})\right) \\
+					&= \sum_{s_{-1-2} \in A_{-1-2}} f(\sigma_{-1-2})(s_{-1-2}) \\
+					&\hspace{2mm} \vdots \\
+					&= \sum_{s_{-1 - \ldots - (n-1)} \in A_{-1 - \ldots - (n-1)}} f(\sigma_{-1 - \ldots - (n-1)})(s_{-1 - \ldots - (n-1)}) \\
+					&= \sum_{s_n \in A_n} \sigma_n(s_n) = 1.
+				\end{align*}
+				\item For each $\sigma, \sigma' \in \nabla(A)$ and $i \in N$, recalling that $\sigma_i(s_i) = 1 - \sum_{s'_i \in A_i-\{s_i\}}\sigma_i(s'_i)$ and $\sigma'_i(s_i) = 1 - \sum_{s'_i \in A_i-\{s_i\}}\sigma'_i(s'_i)$, we have:
+				\begin{align*}
+					f(\sigma) &= f(\sigma') \\
+					\Rightarrow f(\sigma)(s) &= f(\sigma')(s) \text{ for all } s \in A \\
+					\Rightarrow \prod_{i \in N}\sigma_i(s_i) &= \prod_{i \in N}\sigma'_i(s_i) \text{ for all } s \in A.
+				\end{align*}
+				If we fix $s_1 \in A_1$ then for all $s_{-1} \in A_{-1}$ we have:
+				\[ \Rightarrow
+				\begin{cases}
+					\displaystyle\sigma_1(s'_1)f(\sigma_{-1})(s_{-1}) = \sigma'_1(s'_1)f(\sigma'_{-1})(s_{-1}) \text{ for all } s'_1 \in A_1-\{s_1\}& \\
+					\displaystyle\left(1- \sum_{s'_1 \in A_1-\{s_1\}}\sigma_1(s'_1)\right)f(\sigma_{-1})(s_{-1}) = \left(1- \sum_{s'_1 \in A_1-\{s_1\}}\sigma'_1(s'_1)\right)f(\sigma'_{-1})(s_{-1})&
+				\end{cases}
+				\]
+				\[ \Rightarrow
+				\begin{cases} 
+					\displaystyle\sum_{s'_1 \in A_1-\{s_1\}}\sigma_1(s'_1)f(\sigma_{-1})(s_{-1}) = \sum_{s'_1 \in A_1-\{s_1\}}\sigma'_1(s'_1)f(\sigma'_{-1})(s_{-1})& \\
+					\displaystyle\sum_{s'_1 \in A_1-\{s_1\}}\sigma_1(s'_1)f(\sigma_{-1})(s_{-1}) = f(\sigma_{-1})(s_{-i}) - f(\sigma'_{-1})(s_{-1}) + \sum_{s'_1 \in A_1-\{s_1\}}\sigma'_1(s'_1)f(\sigma'_{-1})(s_{-1})&
+				\end{cases}
+				\]
+				\begin{align*}
+					\Rightarrow \sum_{s'_1 \in A_1-\{s_1\}}\sigma'_1(s'_1)f(\sigma'_{-1})(s_{-1}) &= f(\sigma_{-1})(s_{-1}) - f(\sigma'_{-1})(s_{-1}) + \sum_{s'_1 \in A_1-\{s_1\}}\sigma'_1(s'_1)f(\sigma'_{-1})(s_{-1}) \\
+					\Rightarrow f(\sigma_{-1})(s_{-1}) &= f(\sigma'_{-1})(s_{-1}).
+				\end{align*}
+				Repeating the steps taken so far for all players excluding $i$ we get:
+				\begin{align*}
+					f(\sigma)(s) &= f(\sigma')(s) \text{ for all } s \in A\\
+					\Rightarrow f(\sigma_{-1})(s_{-1}) &= f(\sigma'_{-1})(s_{-1}) \text{ for all } s_{-1} \in A_{-1} \\
+					&\hspace{2mm} \vdots \\
+					\Rightarrow f(\sigma_{-1-\ldots-(i-1)})(s_{-1-\ldots-(i-1)}) &= f(\sigma'_{-1-\ldots-(i-1)})(s_{-1-\ldots-(i-1)}) \\
+					\text{ for all } s_{-1-\ldots-(i-1)} &\in A_{-1-\ldots-(i-1)} \\
+					\Rightarrow f(\sigma_{-1-\ldots-(i-1)-(i+1)})(s_{-1-\ldots-(i-1)-(i+1)}) &= f(\sigma'_{-1-\ldots-(i-1)-(i+1)})(s_{-1-\ldots-(i-1)-(i+1)}) \\
+					\text{ for all } s_{-1-\ldots-(i-1)-(i+1)} &\in A_{-1-\ldots-(i-1)-(i+1)} \\
+					&\hspace{2mm} \vdots \\
+					\hspace{-1cm}\Rightarrow f(\sigma_{-1-\ldots-(i-1)-(i+1)-\ldots-n})(s_{-1-\ldots-(i-1)-(i+1)-\ldots-n}) &= f(\sigma'_{-1-\ldots-(i-1)-(i+1)-\ldots-n})(s_{-1-\ldots-(i-1)-(i+1)-\ldots-n}) \\
+					\text{ for all } s_{-1-\ldots-(i-1)-(i+1)-\ldots-n} &\in A_{-1-\ldots-(i-1)-(i+1)-\ldots-n} \\
+					\Rightarrow \sigma_i(s_i) &= \sigma'_i(s_i) \text{ for all } s_i \in A_i \\
+					\Rightarrow \sigma_i &= \sigma_i'.
+				\end{align*}
+				\item First let $\sigma \in \Delta(A)$. If we let $s \in A$ and specify values $\sigma(s') \geq 0$ for all $s' \in A-\{s\}$ such that $\sum_{s' \in A-\{s\}}\sigma(s') \leq 1$ then $\sigma$ is uniquely determined, as $\sigma(s) = 1 - \sum_{s' \in A-\{s\}}\sigma(s')$. Further, if we let $\sigma' \in \Delta(A)$ where there exists $s' \in A-\{s\}$ such that $\sigma'(s') \neq \sigma(s')$ then we trivially have that $\sigma' \neq \sigma$. Hence $\sigma$ is uniquely determined if and only if we have have values specified for all $s' \in A-\{s\}$, which is $-1 + |A| = -1 + \prod_{i \in N}|A_i|$ values. To complete the proof it suffices for us to show that fewer values will uniquely determine an arbitrary $\sigma \in \nabla(A)$.
+				
+				Let $\sigma = (\sigma_1, \ldots, \sigma_n) \in \nabla(A)$, $s \in A$ and $i \in N$. For each $j \in N$ pick $s'_j \in A_j-\{s_j\}$. Note that $\sigma_j(s'_j) = 1 - \sum_{s''_j \in A_j-\{s_j'\}}\sigma_j(s''_j)$. Now:
+				\begin{enumerate}
+					\item for each $s''_i \in A_i-\{s'_i\}$, suppose $f(\sigma)(s''_i, s_{-i})$ is specified; and 
+					\item for each $j \in N_{-i}$ and $s''_j \in A_j$, suppose $f(\sigma)(s''_j, s_{-j})$ is specified.
+				\end{enumerate}
+				This gives us $\sum_{i \in N}\left(|A_i|-1\right) = -n + \sum_{i \in N}|A_i|$ values specified. Since $-n < -1$ for all $n \geq 2$ and $\sum_{i \in N}|A_i| \leq \prod_{i \in N}|A_i|$ for all $n$ and all $|A_1|, \ldots, |A_n| \geq 2$, it follows that $-n + \sum_{i \in N}|A_i| < -1 + \prod_{i \in N}|A_i|$ for all $n \geq 2$ and all $|A_1|, \ldots, |A_n| \geq 2$. 
+				
+				For each $j \in N_{-i}$ and $s''_j \in A_j$, $f(\sigma)(s''_j, s_{-j}) = \sigma_j(s''_j)\prod_{k \in N_{-j}}\sigma_k(s_k) = \sigma_i(s_i)\sigma_j(s''_j)\sum_{k \in N_{-i-j}}\sigma_k(s_k)$ with $f(\sigma)(s'_j, s_{-j}) = \sigma_i(s_i)\left(1 - \sum_{s''_j \in A_j-\{s_j'\}}\sigma_j(s''_j)\right)\sum_{k \in N_{-i-j}}\sigma_k(s_k)$. Rearranging we get:
+				\begin{align}
+					\sigma_i(s_i) &= \frac{f(\sigma)(s''_j, s_{-j})}{\sigma_j(s''_j)\prod_{k \in N_{-i-j}}\sigma_k(s_k)} \text{ for all } s''_j \in A_j; \text{ and} \label{eqn:zzz1} \\
+					\sigma_i(s_i) &= \frac{f(\sigma)(s'_j, s_{-j})}{\left(1 - \sum_{s''_j \in A_j-\{s_j'\}}\sigma_j(s''_j)\right)\prod_{k \in N_{-i-j}}\sigma_k(s_k)}. \label{eqn:zzz2}
+				\end{align}
+				
+				For each $s''_j \in A_j-\{s'_j\}$, if we set Equation \eqref{eqn:zzz1} equal to itself for the $s_j$ and $s_j''$ cases then rearrange we get:
+				\begin{align}
+					\frac{f(\sigma)(s_j, s_{-j})}{\sigma_j(s_j)\prod_{k \in N_{-i-j}}\sigma_k(s_k)} &= \frac{f(\sigma)(s''_j, s_{-j})}{\sigma_j(s''_j)\prod_{k \in N_{-i-j}}\sigma_k(s_k)} \nonumber\\
+					\Rightarrow \sigma_j(s''_j) &= \frac{f(\sigma)(s''_j, s_{-j})}{f(\sigma)(s_j, s_{-j})}\sigma_j(s_j). \label{eqn:zzz3}
+				\end{align}
+				
+				Subbing Equation \eqref{eqn:zzz3} in to Equation \eqref{eqn:zzz2} then setting equal to Equation \eqref{eqn:zzz1} for the $s_j$ case we get:
+				\begin{align*}
+					\frac{f(\sigma)(s'_j, s_{-j})}{\left(1 - \displaystyle\sum_{s''_j \in A_j-\{s'_j\}}\frac{f(\sigma)(s''_j, s_{-j})}{f(\sigma)(s_j, s_{-j})}\sigma_j(s_j)\right)\displaystyle\prod_{k \in N_{-i-j}}\sigma_k(s_k)} &= \frac{f(\sigma)(s_j, s_{-j})}{\sigma_j(s_j)\displaystyle\prod_{k \in N_{-i-j}}\sigma_k(s_k)} 
+				\end{align*}
+				\begin{align}
+					\Rightarrow f(\sigma)(s'_j, s_{-j})\sigma_j(s_j) &= f(\sigma)(s_j, s_{-j}) - \sum_{s''_j \in A_j-\{s'_j\}}f(\sigma)(s''_j, s_{-j})\sigma_j(s_j) \nonumber \\
+					\Rightarrow \sigma_j(s_j) &= \frac{f(\sigma)(s_j, s_{-j})}{\displaystyle\sum_{s''_j \in A_j}f(\sigma)(s''_j, s_{-j})} = \frac{f(\sigma)(s_j, s_{-j})}{\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})}. \label{eqn:zzz4}
+				\end{align}
+				Subbing Equation \eqref{eqn:zzz4} in to Equation \eqref{eqn:zzz3}, for each $s''_j \in A_j-\{s'_j\}$ we get:
+				\[
+					\sigma_j(s''_j) = \frac{f(\sigma)(s''_j, s_{-j})}{f(\sigma)(s_j, s_{-j})}\sigma_j(s_j) = \frac{f(\sigma)(s''_j, s_{-j})}{f(\sigma)(s_j, s_{-j})}\frac{f(\sigma)(s_j, s_{-j})}{\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})} = \frac{f(\sigma)(s''_j, s_{-j})}{\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})}.
+				\]
+				Which gives us:
+				\begin{align*}
+					\sigma_j(s'_j) &= 1 - \sum_{s''_j \in A_j-\{s'_j\}}\sigma_j(s''_j) \\
+					&= 1 - \sum_{s''_j \in A_j-\{s'_j\}}\frac{f(\sigma)(s''_j, s_{-j})}{\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})}\\
+					&= \frac{\left(\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})\right) - \left(\displaystyle\sum_{s''_j \in A_j-\{s'_j\}}f(\sigma)(s''_j, s_{-j})\right)}{\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})} \\
+					&= \frac{f(\sigma)(s'_j, s_{-j})}{\displaystyle\sum_{s'''_j \in A_j}f(\sigma)(s'''_j, s_{-j})}. 
+				\end{align*}
+				
+				Finally, for each $s''_i \in A_i-\{s'_i\}$ we have:
+				\begin{align*}
+					\sigma_i(s''_i) &= \frac{f(\sigma)(s''_i, s_{-i})}{\displaystyle\prod_{j \in N_{-i}}\sigma_j(s_j)}; \text{ and} \\
+					\sigma_i(s'_i) &= 1 - \sum_{s''_i \in A_i-\{s'_i\}}\sigma_i(s''_i) = 1 - \frac{\displaystyle\sum_{s''_i \in A_i-\{s'_i\}}f(\sigma)(s''_i, s_{-i})}{\displaystyle\prod_{j \in N_{-i}}\sigma_j(s_j)}.
+				\end{align*}
+			\end{enumerate}
+			
+			Hence with $-n + \sum_{i \in N}|A_i|$ values already specified the rest of $\sigma$ is uniquely determined. Consequently $\Delta(A) - f(\nabla(A))$ is non-empty. %Note that we have said nothing about whether the values specified are independent from each other, it is irrelevant for this proof.
+		\end{proof}
+	\end{proposition}
+	
+	To simplify notation for the remainder of the paper, for each $\sigma \in \nabla(A)$ and $s \in A$ we shall denote $f(\sigma)(s)$ as $\sigma(s)$. 
+	
+	%Given a game $\Gamma = (N, A, u)$, for each player $i \in N$, the \textit{mixed strategies for player $i$}, which we denote by $\Delta(A_i)$, are the probability distributions over $A_i$, ie. $\Delta(A_i) = \{\sigma_i \in [0,1]^{A_i}: \Sigma_{s_i \in A_i} \sigma_i(s_i) = 1\}$. The \textit{mixed strategy profiles}, which we denote by $\Delta(A)$, are $\times_{i \in N}\Delta(A_i)$.
+	
+	%Need to argue $\Delta(A) = \{\sigma \in [0,1]^A: \Sigma_{s \in A}\sigma(s) = 1\} \cong \times_{i \in N}\Delta(A_i)$ equipped with for each $\sigma \in \times_{i \in N}\Delta(A_i)$, $\sigma(s) = \prod_{i \in N}\sigma_i(s_i)$ for all $s \in A$.
+	
+	Need to do expected utility. For each player $i \in N$, the domain for their utility function can be extended linearly from $A$ to $\nabla(A)$ with $\textswab{u}_i(\sigma) = \Sigma_{s \in A}\sigma(s)u_i(s)$ for all $\sigma \in \nabla(A)$.
+	
+	What about ${\nabla(A)}_{-i} = \times_{j \in N-\{i\}}\Delta(A_j)$? Do we have ${\nabla(A)}_{-i} \subset \Delta(A_{-i})$? Also given $i \in N$ and $\sigma \in \nabla(A)$, we have $\sigma_{-i} = (\sigma_1, \ldots, \sigma_{i-1}, \sigma_{i+1}, \ldots, \sigma_n) \in {\nabla(A)}_{-i}$.
+	
+	A \textit{pure strategy Nash equilibrium} is a strategy profile $s \in A$ where for each $i \in N$, $u_i(s_i, s_{-i}) \geq u_i(s_i', s_{-i})$ for all $s_i' \in A_i$. For example, in Example \ref{fullsymeg} the profile $(b,b,b)$ is a pure strategy Nash equilibrium.
+	
+	For each player $i \in N$, the \textit{maximin value} for player $i$ is given by:
+	\[\underline{u}_i = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}),\]
+	and the \textit{minimax value} for player $i$ is given by:
+	\[\overline{u}_i = \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}).\]
+	
+	The maximin value for player $i$ from an intuitive point of view is:
+	\begin{enumerate}
+		\item the highest expected payoff player $i$ can be sure to obtain when they do not know what strategies their opponents will play; and
+		\item the lowest expected payoff player $i$'s opponents can force player $i$ to obtain when they know what strategy player $i$ will play.
+	\end{enumerate}
+	
+	While the minimax value for player $i$ from an intuitive point of view is:
+	\begin{enumerate}
+		\item the lowest expected payoff player $i$'s opponents can force player $i$ to obtain when they do not know what strategy player $i$ will play; and
+		\item the highest expected payoff player $i$ can be sure to obtain when they know what strategies their opponents will play.
+	\end{enumerate} 
+	
+	It is obvious from both intuitive points of view for the maximin and minimax values that the maximin values are less than or equal to the minimax values, ie. for each player $i \in N$:
+	\[\underline{u}_i = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) \leq \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) = \overline{u}_i.\]
+	
+	A fairly standard proof of the above is as follows.
+	
+	\begin{proposition}
+		Given a game $\Gamma = (N, A, u)$, for each player $i \in N$:
+		\[\underline{u}_i = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) \leq \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) = \overline{u}_i.\]
+		
+		\begin{proof}
+			Let $\sigma^*_i = \displaystyle\argmax_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i})$ and $\sigma^*_{-i} = \displaystyle\argmin_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i})$.
+			
+			\begin{enumerate}
+				\item $\underline{u}_i = \displaystyle\max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) \leq u_i(\sigma^*_i, \sigma_{-i})$ for all $\sigma_{-i} \in {\nabla(A)}_{-i}$; and
+				\item $u_i(\sigma_i, \sigma^*_{-i}) \leq \displaystyle\min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) = \overline{u}_i$ for all $\sigma_i \in \Delta(A_i)$.
+			\end{enumerate}
+			
+			From which it follows that $\underline{u}_i \leq u_i(\sigma^*_i, \sigma^*_{-i}) \leq \overline{u}_i$.
+		\end{proof}
+	\end{proposition}
+	
+	A game $\Gamma = (N, A, u)$ is referred to as \textit{zero-sum} if $\sum_{i \in N} u_i(s) = 0$ for all $s \in A$. In a zero-sum game, each player's gain or loss is exactly matched by the combined losses or gains of their opponents. 
+	
+	\begin{proposition}
+		Given a $2$-player zero-sum game $(\{1, 2\}, A_1 \times A_2, (u_1, u_2))$, the maximin and minimax values for each player are equal to minus the minimax and maximin values for the other player.
+		
+		\begin{proof}
+			The following is basically rephrased from what is on (I think from memory) Wikipedia.
+		
+			This may be seen by noting that $u_1(s) = -u_2(s)$, and $u_2(s) = -u_1(s)$, for all $s \in A$. Hence:
+			\begin{align*}
+				\text{(i) } \underline{u}_1 = \max_{\sigma_1 \in \Delta(A_1)}\min_{\sigma_2 \in \Delta(A_2)} u_1(\sigma_1, \sigma_2) &= \max_{\sigma_1 \in \Delta(A_1)}\min_{\sigma_2 \in \Delta(A_2)} -u_2(\sigma_1, \sigma_2) \\
+				&= -\min_{\sigma_1 \in \Delta(A_1)}\max_{\sigma_2 \in \Delta(A_2)} u_2(\sigma_1, \sigma_2) = -\overline{u}_2; \text{ and} \\
+				\text{(ii) } \overline{u}_1 = \min_{\sigma_1 \in \Delta(A_1)}\max_{\sigma_2 \in \Delta(A_2)} u_1(\sigma_1, \sigma_2) &= \min_{\sigma_1 \in \Delta(A_1)}\max_{\sigma_2 \in \Delta(A_2)} -u_2(\sigma_1, \sigma_2) \\
+				&= -\max_{\sigma_1 \in \Delta(A_1)}\min_{\sigma_2 \in \Delta(A_2)} u_2(\sigma_1, \sigma_2) = -\underline{u}_2. 
+			\end{align*}
+		\end{proof}
+	\end{proposition}
+	
+	Now show each player's maximin value and minimax value are equal for $2$-player zero-sum games. 
+	
+	\begin{proposition} \label{prop:2pzsminmax=maxmin}
+		Given a $2$-player zero-sum game $\Gamma = (\{1, 2\}, A_1\times A_2, (u_1, u_2))$, the maximin and minimax values for each player are equal. Ie. $\underline{u}_i = \overline{u}_i$ for all $i \in \{1, 2\}$.
+		
+		\begin{proof}
+			There is a number of proofs for this throughout the literature and on the internet, one shall be added and cited it later. 
+		\end{proof}
+	\end{proposition}
+	
+	\begin{proposition} \label{prop:2pzsminmaxi=-minmaxj}
+		Given a zero-sum game $(N, A, u)$, for each $i \in N$, $(\set{i, -i}, A_i\times{A_{-i}}, u^*_i\times u^*_{-i})$ is a $2$-player zero-sum game where $u^*_i = u$ and $u^*_{-i} = \Sigma_{j \in N-\{i\}}u_i$. Since what we would want for $A^*_{-i}$ is just $A_{-i}$ we do not bother complicating our notation further, similarly with $A_i$. 
+		
+		\begin{proof}
+			Note that we have two players, $i$ and $-i$, each with a finite number of strategies, and for each $s \in A_i$ and $s_{-i} \in A_{-i}$ we have $u^*_i(s) = u_i(s)$ and $u^*_{-i}(s) = \Sigma_{j \in N-\{i\}} u_i(s)$, hence $u^*_i(s) + u^*_{-i}(s) = u_1(s) + \ldots u_n(s) = 0$.
+		\end{proof}
+	\end{proposition}
+	
+	It will be of interest from the theory point of view to establish, in the context of ($n$-person) zero-sum games, whether each player's maximin and minimax values must be equal. An attempt at trying to establish that they are equal is below, 
+	
+	\begin{puzzle}
+		Given a zero-sum game $\Gamma = (N, A, u)$, are each player's maximin value and minimax value equal (it is difficult to work out what the actual puzzles even are here, proceed with \textbf{caution}!):
+		\begin{enumerate}
+			\item under what conditions (possibly all/none) do we have $\underline{u}^*_i = \underline{u}^*_{-i}$ and $\overline{u}^*_i = \overline{u}^*_{-i}$?;
+			\item under what conditions (possibly all/none) do we have $\underline{u}_i = \overline{u}_i$ for all $i \in N$?; and
+			\item under what conditions (possibly all/none) do we have $\underline{u}_i = u_{-i}$
+		\end{enumerate}
+		
+		\begin{proof}
+			If $\Gamma$ has only two players then the result follows from Proposition \ref{prop:2pzsminmax=maxmin}, so suppose $\Gamma$ has more than two players.
+		
+			Given a zero-sum game $\Gamma = (N, A, u)$, for each player $i \in N$ let $\Gamma' = (\{i, -i\}, A_i\times{A_{-i}}, (u^*_i, u^*_{-i}))$ be the $2$-player zero-sum game where $u^*_i = u_i$ and $u^*_{-i} = \Sigma_{j \in N-\{i\}}u_j$, ie. $u^*_{-i}(s) = \Sigma_{j \in N-\{i\}}u_j(s)$ for all $s \in A$.
+			
+			For each $i \in N$, noting that it follows from Propositions \ref{prop:2pzsminmax=maxmin} and \ref{prop:2pzsminmaxi=-minmaxj} that $\underline{u}^*_i = \overline{u}^*_i = - \overline{u}^*_i = - \underline{u}^*_i$. %, we have $\underline{u}_i = \underline{u}^*_i = \overline{u}^*_i = \overline{u}_i$.
+			
+			Hence puzzle (ii) is fine, ie. we do know that $\underline{u}^*_i = \overline{u}^*_i = \overline{u}^*_{-i} = \underline{u}^*_{-i}$.
+			
+			It remains to show $\underline{u}_i = \underline{u}^*_i$ and $\overline{u}^*_i = \overline{u}_i$? Ie. need to prove/show/establish whether:
+			
+			\[ \Rightarrow
+				\begin{cases}
+					\displaystyle \underline{u}_i = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \nabla(A)_{-i}} u_i(\sigma_i, \sigma_{-i}) = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \Delta(A_{-i})} u^*_i(\sigma_i, \sigma_{-i}) = \underline{u}^*_i; \text{ and} & \\
+					\displaystyle \overline{u}^*_i = \min_{\sigma_i \in \Delta(A_i)}\max_{\sigma_{-i} \in \nabla(A)_{-i}} u_i(\sigma_i, \sigma_{-i}) = \min_{\sigma_i \in \Delta(A_i)}\max_{\sigma_{-i} \in \Delta(A_{-i})} u^*_i(\sigma_i, \sigma_{-i}) = \overline{u}_i. &
+				\end{cases}
+			\]
+		\end{proof}
+	\end{puzzle}
+	
+	
+	We denote the subgroup relation as $\leq$, the group generated by a subset $H$ of a group $G$ as $\langle{H}\rangle$, the group of permutations on a non-empty set $X$ as $S_X$, and the subset of transpositions on $X$ as $T_X$. The reader is reminded that the permutations on $X$ are equivalent to the bijections from $X$ to itself, henceforth we will refer to them interchangeably.
+	
+	An \textit{action} of a group $G$ on a set $N$ is a homomorphism $\alpha$ from $G$ into the bijections from $N$ to itself. For each $g \in G$ and $i \in N$ we denote $\bigl(\alpha(g)\bigr)(i)$ as $g(i)$. When $G$ acts on the left or right of $N$ the action is called a left or right action respectively. We note that left actions can be defined equivalently as antihomomorphisms that act on the right, and dually for right actions.
+	
+	An action is \textit{transitive} if for each $i, j \in N$ there exists $g \in G$ such that $g(i) = j$, \textit{regular} if for each $i, j \in N$ there exists precisely one $g \in G$ such that $g(i) = j$, and \textit{$n$-transitive} if for each $\pi \in S_N$ there exists $g \in G$ such that $g(i) = \pi(i)$ for all $i \in N$. When an action of $G$ can be inferred we simply refer to $G$ as being transitive, regular or $n$-transitive respectively.
+	
+	The \textit{stabiliser of $i \in N$}, which we denote as $G_i$, is the subgroup $\{g \in G: g(i) = i\}$ of elements in $G$ that fix $i$. Similarly the \textit{stabiliser of $N$}, which we denote as $G_N$, is the normal subgroup $\{g \in G: g(i) = i \text{ for all } i \in N\} = \cap_{i \in N}G_i$ of elements in $G$ that fix each $i \in N$.
+	
+	The \textit{orbit of $i \in N$} is $G(i) = \{g(i): g \in G\}$. The \textit{orbits of $N$}, denoted as $N/G$, is the set $\{G(i): i \in N\}$ which forms a partition of $N$.
+	
+	By a \textit{groupoid} we mean a category in which every morphism is invertible. For the sake of brevity, when the objects of a groupoid can be inferred we refer to the morphisms as a groupoid. 

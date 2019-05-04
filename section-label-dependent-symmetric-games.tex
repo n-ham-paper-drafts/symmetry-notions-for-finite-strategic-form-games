@@ -1,0 +1,375 @@
+\section{Label-Dependent Notions of Symmetry} \label{sec:labdepnotions}
+There are various ways to define a notion of symmetry, not all of which are distinct. In each case we need all players to have the same number of strategies, consequently all games are implicitly $m$-strategy games. It is often assumed when defining symmetric games that all players have the same strategy labels and any notion of symmetry will treat the same labels as equivalent. We shall refer to these as \textit{label-dependent} notions. 
+
+\subsection{Permutations Acting On Strategy Profiles}
+There is some confusion over how to correctly define symmetric games, see \cite[Definition 7]{DMaskin}, in order to provide clarity we need to review two ways that player permutations may act on strategy profiles. 
+
+Given a player permutation $\pi \in S_N$ and strategy profile $s \in A$, two possible action choices are $(s_i)_{i \in N} \mapsto (s_{\pi(i)})_{i \in N}$ and $(s_i)_{i \in N} \mapsto (s_{\pi^{-1}(i)})_{i \in N}$. We denote $(s_{\pi^{-1}(i)})_{i \in N}$ as $\pi(s)$, for example given $(s_1, \ldots, s_n) \in A$, $\pi(s_1, \ldots, s_n) = (s_{\pi^{-1}(1)}, \ldots, s_{\pi^{-1}(n)})$.
+
+The author notes that our somewhat unintuitive notation has been chosen so that it matches with composition and inversion in an ideal manner. That is so for each $s \in A$, $(\tau \circ \pi)(s) = \tau\bigl(\pi(s)\bigr)$ and $(\tau \circ \pi)^{-1} = \pi^{-1} \circ \tau^{-1}$. 
+
+\begin{lemma} \label{simpleactionprop}
+	$s \mapsto \pi(s)$ is a left action of $S_N$ on $A$.
+	\begin{proof}
+		The identity permutation trivially acts as an identity so we need only establish associativity. For each $\pi, \tau \in S_N$, $s \in A$ and $i \in N$, $\bigl((\tau \circ \pi)(s)\bigr)_i = s_{(\tau \circ \pi)^{-1}(i)} = s_{\pi^{-1}(\tau^{-1}(i))} = \bigl(\pi(s)\bigr)_{\tau^{-1}(i)} = \Bigl(\tau\bigl(\pi(s)\bigr)\Bigr)_i$.
+		
+		For each $s, s' \in A$. We have $\pi(s) = \pi(s')$ if and only if $s_{\pi^{-1}(i)} = s_{\pi^{-1}(i)}'$ for all $i \in N$ and for each $s \in A$, $\pi^{-1}(s) \in A$ and $\pi(\pi^{-1}(s)) = (\pi \circ \pi^{-1})(s) = s$. Hence for each $s \in A$, $s \mapsto \pi(s)$ is both injective and surjective, ie. $s \mapsto \pi(s) \in \bij(A, A)$.
+	\end{proof}
+\end{lemma}
+
+It might be worth explaining which bijections of $A$ we have using $\{s\mapsto\pi(s): \pi \in S_N\}$? Ie. $\bij(A)-\{s\mapsto\pi(s): \pi \in S_N\}$, though is trivially just the bijections where there's consistency with mapping strategies from one player to the same possibly other player. Same for $\{s\mapsto g(s): g \in \bij(\Gamma)\}$ later. 
+
+Since $\pi^{-1}(s) = (s_{\pi(i)})_{i \in N}$ for all $s \in A$, $s \mapsto \pi(s)$ and $s \mapsto \pi^{-1}(s)$ are dual to each other. Hence the dual results hold for $\pi^{-1}$.
+
+\begin{lemma} 
+	$s \mapsto \pi^{-1}(s)$ is a right action of $S_N$ on $A$.
+\end{lemma}
+
+Given $\pi \in S_N$ we denote the map $s \mapsto u_{\pi(i)}\bigl(\pi(s)\bigr)$ as $u_{\pi(i)} \circ \pi$. Note that $u_{\pi(i)} \circ \pi$ is the utility function of player $\pi(i)$ when the strategy profiles are acted upon by the player permutation $\pi$.
+
+\begin{corollary} \label{utilityactionprop}
+	For each $\pi, \tau \in S_N$, $u_{(\tau \circ \pi)(i)} \circ (\tau \circ \pi) = (u_{\tau(\pi(i))} \circ \tau) \circ \pi$.
+	\begin{proof}
+		For each $i \in N$, $s \in A$, $\left(u_{(\tau \circ \pi)(i)} \circ (\tau \circ \pi)\right)(s) = u_{(\tau \circ \pi)(i)}\Bigl((\tau \circ \pi)(s)\Bigr) = u_{\tau(\pi(i))}\Bigl(\tau\bigl(\pi(s)\bigr)\Bigr) = \left((u_{\tau(\pi(i))} \circ \tau) \circ \pi\right)(s)$.
+	\end{proof}
+\end{corollary}
+
+The above may all be done exactly the same but with mixed strategy profiles, however the bulk majority of cases where we use permutations acting on strategy profiles it will be for pure strategy profiles. Oppositely, the following may all be done exactly the same but with pure strategy profiles, however the purposes that led to bothering with such notation in the first place involves mixed not pure strategy profiles. 
+
+Given $\pi \in S_N$ and $\sigma \in \nabla(A)$, we denote:
+\begin{enumerate}
+	\item $\sigma_i$ as $\pi(\sigma_i)$; and
+	\item $(\sigma_{\pi^{-1}(1)}, \ldots, \sigma_{\pi^{-1}\left(\pi(i)-1\right)}, \sigma_{\pi^{-1}\left(\pi(i)+1\right)}, \ldots, \sigma_{\pi^{-1}(n)})$ as $\pi(\sigma_{-i})$.
+\end{enumerate}
+This gives us $\pi(\sigma_i) = \pi(\sigma)_{\pi(i)} \in \Delta(A_{\pi(i)})$ and $\pi(\sigma_{-i}) = \pi(\sigma)_{-\pi(i)} \in {\nabla(A)}_{-\pi(i)}$, however $\pi(\sigma_i)$ does not need a $\sigma_{-i} \in {\nabla(A)}_{-i}$ unlike $\pi(\sigma)_{\pi(i)}$, similarly $\pi(\sigma_{-i})$ does not need a $\sigma_i \in \Delta(A_i)$ unlike $\pi(\sigma)_{-\pi(i)}$, which will make the proof of Proposition \ref{prop:standsymgamesaremaxminandminmaxfair} much easier to understand.
+
+\begin{proposition}
+	For each $i \in N$, $\pi \in S_N$ and $\sigma \in \nabla(A)$, $\pi(\sigma_i, \sigma_{-i}) = \Bigl(\pi(\sigma_i), \pi(\sigma_{-i})\Bigr)$.
+	
+	\begin{proof}
+		Note that for each $(\sigma_i, \sigma_{-i}) \in \Delta(A_i)\times{\nabla(A)}_{-i}$, $(\sigma_i, \sigma_{-i}) = \sigma = (\sigma_j, \sigma_{-j}) \in \Delta(A_j)\times{\nabla(A)}_{-j}$.
+		
+		Now, $\pi(\sigma_i, \sigma_{-i}) = \pi(\sigma) = \Bigl(\pi(\sigma)_{\pi(i)}, \pi(\sigma)_{-\pi(i)}\Bigr) = \Bigl(\pi(\sigma_i), \pi(\sigma_{-i})\Bigr)$.
+	\end{proof}
+\end{proposition}
+
+Note that when $A_i = A_j$ for all $i, j \in N$, the following groupoids in Propositions \ref{prop:firstgroupoidprop} and \ref{prop:secondgroupoidprop} are all groups (or are they? the first yes but what about the second with regards to order/positions of the tuples?). (should they be rephrased, perhaps even with different notation?? what to denote the $A_i$'s as though? Maybe $A_0$? or $A'$ or $\overline{A}$ or $\underline{A}$ or do strategy profiles as $\mathcal{A}$ but would confuse people, as would using $\mathcal{A} = A^n$)
+
+\begin{proposition} \label{prop:firstgroupoidprop}
+	$\set{\sigma_i \mapsto \pi(\sigma_i): i \in N, \pi \in S_N}$ is a subgroupoid of $\set{\bij(\Delta(A_i), \Delta(A_j)): i, j \in N}$.
+	
+	\begin{proof}		
+		Let $Y = \set{\sigma_i \mapsto \pi(\sigma_i): i \in N, \pi \in S_N}$.
+		
+		\begin{enumerate}
+			\item For each $i \in N$, $\id_N(\sigma_i) = \sigma_i$ for all $\sigma_i \in \Delta(A_i)$. Hence $\id_{\Delta(A_i)} = \sigma_i \mapsto \id_N(\sigma_i) \in Y$;
+			\item For each $i \in N$ and $\pi \in S_N$, we trivially have $\sigma_i \mapsto \pi(\sigma_i) \in \bij(\Delta(A_i), \Delta(A_{\pi(i)}))$;
+			\item For each $i \in N$ and $\pi, \tau \in S_N$, $\tau(\pi(\sigma_i)) = \tau(\sigma_i) = \sigma_i = (\tau \circ \pi)(\sigma_i)$. Hence $(\sigma_{\pi(i)} \mapsto \tau(\sigma_{\pi(i)})) \circ (\sigma_i \mapsto \pi(\sigma_i)) = \sigma_i \mapsto (\tau \circ \pi)(\sigma_i) \in Y$; and
+			\item Finally, for each $i \in N$ and $\pi \in S_N$, since $\pi \circ \pi^{-1} = \id_N = \pi^{-1} \circ \pi$, we have $(\sigma_i \mapsto \pi(\sigma_i))^{-1} = \sigma_{\pi(i)} \mapsto \pi^{-1}(\sigma_{\pi(i)}) \in Y$.
+		\end{enumerate} \vspace{-0.8cm}
+	\end{proof}
+\end{proposition}
+
+\begin{proposition} \label{prop:secondgroupoidprop}
+	$\set{\sigma_{-i} \mapsto \pi(\sigma_{-i}): i \in N, \pi \in S_N}$ is a subgroupoid of $\set{\bij({\nabla(A)}_{-i}, {\nabla(A)}_{-j}): i, j \in N}$.
+	
+	\begin{proof}
+		Let $Y = \set{\sigma_{-i} \mapsto \pi(\sigma_{-i}): i \in N, \pi \in S_N}$.
+
+		\begin{enumerate}
+			\item For each $i \in N$, it follows trivially from $\id_N^{-1} = \id_N$ that for each $\sigma_{-i} \in {\nabla(A)}_{-i}$:
+			\begin{align*}
+				\textstyle\id_N(\sigma_{-i}) &= (\sigma_{\id_N^{-1}(1)}, \ldots, \sigma_{\id_N^{-1}\left(\id_N(i)-1\right)}, \sigma_{\id_N^{-1}\left(\id_N(i)+1\right)}, \ldots, \sigma_{\id_N^{-1}(n)})\\
+				&= (\sigma_1, \ldots, \sigma_{\id_N(i)-1}, \sigma_{\id_N(i)+1}, \ldots, \sigma_n)\\
+				&= (\sigma_1, \ldots, \sigma_{i-1}, \sigma_{i+1}, \ldots, \sigma_n) \\
+				&= \sigma_{-i}.
+			\end{align*}
+			Hence $\id_{{\nabla(A)}_{-i}} = \sigma_{-i} \mapsto \id_N(\sigma_{-i}) \in Y$;
+			\item Let $i \in N$, $\pi \in S_N$ and $\sigma_{-i}, \sigma'_{-i} \in {\nabla(A)}_{-i}$, then:
+			\begin{align*}
+				\pi(\sigma_{-i}) &= \pi(\sigma'_{-i}) \\
+				\Rightarrow \sigma_{\pi^{-1}(j)} &= \sigma'_{\pi^{-1}(j)} \text{ for all } j \in \set{1, \ldots, \pi(i)-1, \pi(i)+1, \ldots, n} \\
+				\Rightarrow \sigma_j &= \sigma'_j \text{ for all } j \in \set{1, \ldots, i-1, i+1, \ldots, n}.
+			\end{align*}			
+			Therefore $\sigma_{-i} \mapsto \pi(\sigma_{-i})$ is injective. Now let $i \in N$, $\sigma_{-\pi(i)} = (\sigma_1, \ldots, \sigma_{\pi(i)-1}, \sigma_{\pi(i)+1}, \ldots, \sigma_n) \in {\nabla(A)}_{-\pi(i)}$. Note $(\sigma_{\pi(1)}, \ldots, \sigma_{\pi(i)-1}, \sigma_{\pi(i)+1}, \ldots, \sigma_{\pi(n)}) \in {\nabla(A)}_{-i}$ and:
+			\begin{align*}
+				\pi(\sigma_{\pi(1)}, \ldots, \sigma_{\pi(i)-1}, \sigma_{\pi(i)+1}, \ldots, \sigma_{\pi(n)}) &= (\sigma_{\pi^{-1}(\pi(1))}, \ldots, \sigma_{\pi^{-1}(\pi(\pi(i)-1))}, \sigma_{\pi^{-1}(\pi(\pi(i)+1))}, \ldots, \sigma_{\pi^{-1}(\pi(n))})\\
+				&= (\sigma_1, \ldots, \sigma_{\pi(i)-1}, \sigma_{\pi(i)+1}, \ldots, \sigma_n)\\
+				&= \sigma_{-\pi(i)}.
+			\end{align*}
+			It follows that $\sigma_{-i} \mapsto \pi(\sigma_{-i})$ is surjective, hence $\sigma_{-i} \mapsto \pi(\sigma_{-i}) \in \bij({\nabla(A)}_{-i}, {\nabla(A)}_{-\pi(i)})$;
+			\item For each $i \in N$ and $\pi, \tau \in S_N$:
+			\begin{align*}
+				\tau(\pi(\sigma_{-i})) &= \tau(\sigma_{\pi^{-1}(1)}, \ldots, \sigma_{\pi^{-1}\left(\pi(i)-1\right)}, \sigma_{\pi^{-1}\left(\pi(i)+1\right)}, \ldots, \sigma_{\pi^{-1}(n)}) \\
+				&= (\sigma_{\pi^{-1}(\tau^{-1}(1))}, \ldots, \sigma_{\pi^{-1}\left(\tau^{-1}(\tau(\pi(i))-1)\right)}, \sigma_{\pi^{-1}\left(\tau^{-1}(\tau(\pi(i))+1)\right)}, \ldots, \sigma_{\pi^{-1}(\tau^{-1}(n))}) \\
+				&= (\sigma_{(\tau \circ \pi)^{-1}(1)}, \ldots, \sigma_{(\tau \circ \pi)^{-1}((\tau \circ \pi)(i))-1)}, \sigma_{(\tau \circ \pi)^{-1}((\tau \circ \pi)(i))+1)}, \ldots, \sigma_{(\tau \circ \pi)^{-1}(n))}) \\
+				&= (\tau \circ \pi)(\sigma_{-i}).
+			\end{align*}
+			Hence $(\sigma_{-\pi(i)} \mapsto \tau(\sigma_{-\pi(i)})) \circ (\sigma_{-i} \mapsto \pi(\sigma_{-i})) = \sigma_{-i} \mapsto (\tau \circ \pi)(\sigma_{-i}) \in Y$; and
+			\item Finally, for each $i \in N$ and $\pi \in S_N$, since $\pi \circ \pi^{-1} = \id_N = \pi^{-1} \circ \pi$, we have $(\sigma_{-i} \mapsto \pi(\sigma_{-i}))^{-1} = \sigma_{-\pi(i)} \mapsto \pi^{-1}(\sigma_{-\pi(i)}) \in Y$.
+		\end{enumerate} \vspace{-0.8cm}
+	\end{proof}
+\end{proposition}
+
+\subsection{Game Invariants}
+Game invariants give us a notion of players being indifferent between the current positions and an alternative arrangement of positions.
+
+\begin{definition}
+	$\pi \in S_N$ is an \textit{invariant} of $\Gamma$ if for each $i \in N$, $u_i = u_{\pi(i)} \circ \pi$.
+\end{definition}
+
+\begin{lemma}
+	The invariants of a game form a group.
+	\begin{proof}
+		Since the identity permutation $e \in S_N$ acts as an identity on $A$ it follows that $u_i = u_i \circ e$ for all $i \in N$, hence $e$ is an invariant. Suppose $\pi \in S_N$ is an invariant of $\Gamma$, and hence that for each $i \in N$, $u_{\pi^{-1}(i)} = u_i \circ \pi$. Then for each $i \in N$, $u_i = (u_i \circ \pi) \circ \pi^{-1} = u_{\pi^{-1}(i)} \circ \pi^{-1}$. Finally suppose $\pi, \tau \in S_N$ are invariants of $\Gamma$. Then for each $i \in N$, $u_i = u_{\pi(i)} \circ \pi = (u_{\tau(\pi(i))} \circ \tau) \circ \pi = u_{(\tau \circ \pi)(i)} \circ (\tau \circ \pi)$.
+	\end{proof}
+\end{lemma}
+
+\subsection{Notions of Anonymity}
+Before surveying label-dependent notions of fairness we review various notions of \textit{anonymity}, which have previously been examined by Brandt et al. \cite{brandt2009symmetries}. 
+
+Central to anonymity is the notion that players do not distinguish between their opponents, by which we mean each player merely cares about the strategies being played by their opponents and is indifferent between who is playing them.
+
+\begin{definition}
+	$\Gamma$ is \textit{weakly anonymous} if for each $i \in N$, $\pi \in S_{N-\{i\}}$, $u_i = u_i \circ \pi$.
+\end{definition}
+
+\begin{example} \label{weaklyanoneg}
+	Weakly Anonymous 3-player game.
+	\begin{center}
+	\begin{game}{2}{2}[$(a,,)$]
+     \> $a$      \> $b$ \\
+		$a$   \> $0,1,2$  \> $4,6,7$ \\
+		$b$   \> $4,5,8$  \> $9,12,14$
+	\end{game}
+	\hspace*{10mm} 
+	\begin{game}{2}{2}[$(b,,)$]
+     \> $a$     \> $b$ \\
+		$a$   \> $3,6,8$ \> $10,11,14$ \\
+		$b$   \> $10,12,13$ \> $15,16,17$
+	\end{game}
+	\end{center}
+	The reader may like to verify that $u_i = u_i \circ (jk)$ for all distinct $i, j, k \in N$. For example, $u_1(a,b,a) = 4 = u_1\bigl((23)(a,b,a)\bigr) = u_1(a,a,b)$. Since $S_{N-\{i\}} = \{e, (jk)\}$ for all $i \in N$, $\Gamma$ is weakly anonymous.
+	
+	When we say that players do not distinguish between their opponents, we mean for example that when playing $a$, player $1$ is indifferent between the strategy profiles $(a,a,b)$ and $(a,b,a)$.
+\end{example}
+	
+Weak anonymity may be strengthened by requiring the players care merely about the strategies being played and be indifferent between who is playing each strategy, or equivalently, by requiring each player have the same payoff for each orbit in $A/S_N$.
+
+\begin{definition}
+	$\Gamma$ is \textit{anonymous} if for each $i \in N$, $\pi \in S_N$, $u_i = u_i \circ \pi$. 
+\end{definition}
+
+\begin{example} \label{anoneg}
+		Anonymous 3-player game.
+		\begin{center}
+		\begin{game}{2}{2}[$(a,,)$]
+			      \> $a$      \> $b$ \\
+			$a$   \> $0,1,2$  \> $3,4,5$ \\
+			$b$   \> $3,4,5$  \> $6,7,8$
+		\end{game}
+		\hspace*{10mm} 
+		\begin{game}{2}{2}[$(b,,)$]
+			      \> $a$     \> $b$ \\
+			$a$   \> $3,4,5$ \> $6,7,8$ \\
+			$b$   \> $6,7,8$ \> $9,10,11$
+		\end{game}
+		\end{center}
+		The reader may like to verify the orbits of $A$ are given by $A/S_N = \bigl\{\{(a,a,a)\}, \newline\{(a,a,b), (a,b,a), (b,a,a)\}, \{(a,b,b), (b,a,b), (b,b,a)\}, \{(b,b,b)\}\bigr\}$ and that each player has the same payoff for each orbit in $A/S_N$. 
+		
+		For example, let $\pi = (123)$, then we have $\pi(s_1, s_2, s_3) = (s_{\pi^{-1}(1)}, s_{\pi^{-1}(2)}, s_{\pi^{-1}(3)}) = (s_3, s_1, s_2)$ giving us $\pi(a,a,b) = (b,a,a)$.
+	\end{example}
+	
+Anonymity may be strengthened also by requiring all players have the same payoff for each orbit in $A/S_N$.
+	
+\begin{definition}
+	$\Gamma$ is \textit{fully anonymous} if for each $i, j \in N$, $\pi \in S_N$, $u_i = u_j \circ \pi$. 
+\end{definition}
+
+\begin{example}
+		%Fully symmetric 3-player game with $u_i = u_j$ for all $i, j \in N$.
+		Fully anonymous 3-player game.
+		\begin{center}
+		\begin{game}{2}{2}[$(a,,)$]
+			      \> $a$      \> $b$ \\
+			$a$   \> $1,1,1$  \> $2,2,2$ \\
+			$b$   \> $2,2,2$  \> $3,3,3$
+		\end{game}
+		\hspace*{10mm} 
+		\begin{game}{2}{2}[$(b,,)$]
+			      \> $a$     \> $b$ \\
+			$a$   \> $2,2,2$ \> $3,3,3$ \\
+			$b$   \> $3,3,3$ \> $4,4,4$
+		\end{game}
+		\end{center}
+		The orbits of $A$ for the above game are the same as in Example \ref{anoneg}, however now all players have the same payoff for each orbit.
+	\end{example}
+	
+In a fully anonymous game each player is indifferent between which position they play. Hence fully anonymous games are one class of games that fall under our broad requirements for fairness. 
+
+Note that the published version of \cite{brandt2009symmetries} refers to weakly anonymous, anonymous and fully anonymous games as \textit{weakly symmetric}, \textit{weakly anonymous} and \textit{strongly anonymous games} respectively. The reason for this is the author finds using the symmetric terminology in the context of anonymity rather confusing when it is already the convention to use the term symmetric for notions of symmetry/fairness. Further, since the anonymity notion that \cite{brandt2009symmetries} refer to as weakly symmetric is not the weakest of the three anonymity notions, the author has instead chosen to refer to them as simply anonymous, and so what \cite{brandt2009symmetries} refer to as weakly symmetric the author refers to as weakly anonymous. The author uses fully anonymous instead of strongly anonymous to be consistent with the terminology used for notions of symmetry/fairness.
+
+\subsection{Notions of Fairness (work in progress)} \label{subsec:labeldepnotionsoffairness}
+Interestingly, fairness has not appeared much in the game theory literature. Here we review where the term fair has appeared, introduce several new notions of fairness and begin examining how they relate to one another. Note that we will revisit these notions of fairness several times through the remainder of the paper.
+
+\begin{definition}
+	A $2$-player zero-sum game is \textit{fair} (cite von Neumann) if its value is $0$.
+\end{definition}
+
+\begin{proposition} 
+	(von Neumann) If a $2$-player zero-sum game is fully symmetric then it is fair. 
+\end{proposition}
+
+\begin{definition}
+	We shall refer to a game $\Gamma = (N, A, u)$ as:
+	\begin{enumerate}
+		\item \textit{maximin fair} if $\underline{u}_i = \underline{u}_j$ for all $i, j \in N$;
+		\item \textit{minimax fair} if $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
+		\item \textit{very-weakly-fair} if $\underline{u}_i = \underline{u}_j$ and $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
+		\item \textit{weakly-fair} if $\underline{u}_i = \overline{u}_i = \underline{u}_j = \overline{u}_j$ for all $i, j \in N$; and
+		\item \textit{fair} if $\underline{u}_i = \overline{u}_i = 0$ for all $i \in N$;
+		\item \textit{standard strictly fair} if the 
+		\item \textit{fully strictly fair} if
+		\item \textit{standard ordinally fair} if there is a transitive subgroup of player permutations that preserve preferences over pure strategy profiles (need to work out how to phrase this and establish that it is precise/concrete/unambiguous);
+		\item \textit{fully ordinally fair} 
+		\item \textit{standard cardinally fair} if there is a transitive subgroup of player permutations that preserve preferences over mixed strategy profiles (need to work out how to phrase this and establish that it is precise/concrete/unambiguous, including if the players are indifferent between the positions of their opponents up to preserving preferences over the pure strategies when the strategy sets are matched up). 
+		\item \textit{fully cardinally fair} if the players are indifferent between the positions of their opponents up to preserving preferences over the mixed strategy profiles when the strategy sets are matched up (need to work out how to phrase this and establish that it is precise/concrete/unambiguous).
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	(don't need this anymore) We shall refer to a game $\Gamma = (N, A, u)$ as \textit{maximin fair} and \textit{minimax fair} if for each $i, j \in N$:
+	\begin{align*}
+		\text{(i) } \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) &= \max_{\theta_j \in \Delta(A_j)}\min_{\theta_{-j} \in {\nabla(A)}_{-j}} u_j(\theta_j, \theta_{-j}); \text{ and} \\
+		\text{(ii) } \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) &= \min_{\theta_{-j} \in {\nabla(A)}_{-i}}\max_{\theta_j \in \Delta(A_j)} u_j(\theta_j, \theta_{-j}).
+	\end{align*}
+\end{definition}
+
+Need to check whether the following holds in the label-independent case. 
+
+\begin{proposition} \label{prop:standsymgamesaremaxminandminmaxfair}
+	If a (zero-sum) game $\Gamma = (N, A, u)$ is standard symmetric then it is maximin fair and minimax fair.
+	
+	\begin{proof}
+		Since $\Gamma$ is standard symmetric there exists a transitive subgroup of the game invariants $T$ such that for each $\pi \in T$, $u_i = u_i \circ \pi$ for all $i \in N$. For each $i, j \in N$, since $T$ is transitive there exists $\pi \in T$ such that $\pi(i) = j$. Using $u_i = u_{\pi(i)} \circ \pi = u_j \circ \pi$, rearranging and then changing variables we have:
+		\begin{align*}
+			\text{(i) }\max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) &= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \Delta(A)_{-i}} u_i(\sigma) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} (u_{\pi(i)} \circ \pi)(\sigma) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma)\right) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma)_j, \pi(\sigma)_{-j}\right) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma_i), \pi(\sigma_{-i})\right) \\
+			&= \max_{\theta_j \in \Delta(A_j)}\min_{\theta_{-j} \in {\nabla(A)}_{-j}} u_j(\theta_j, \theta_{-j}); \text{ and} \\
+			\text{(ii) }\min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) &= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} (u_{\pi(i)} \circ \pi)(\sigma) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma)\right) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma)_j, \pi(\sigma)_{-j}\right) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma_i), \pi(\sigma_{-i})\right) \\
+			&= \min_{\theta_{-j} \in {\nabla(A)}_{-j}}\max_{\theta_j \in \Delta(A_j)} u_j(\theta_j, \theta_{-j}). 
+		\end{align*} 
+	\end{proof}
+\end{proposition}
+
+It was established by von Neumann and Morgenstern \cite[Pages 165-166]{VNM} that every $2$-player standard symmetric zero-sum game is fair. 
+
+Need to determine whether a zero-sum standard symmetric game $\Gamma = (N, A, u)$ is necessarily fair.
+
+
+\subsection{Notions of Symmetry} \label{subsec:labeldepnotionsofsymmetry}
+Our broad requirements for fairness that players be indifferent between which position they play may be made more precise by requiring the invariants of a game be a transitive subgroup of $S_N$.
+
+\begin{definition}
+	$\Gamma$ is \textit{standard symmetric} \cite{NoahXE} if there exists a transitive subgroup $H$ of the player permutations such that for each $i \in N$ and $\pi \in H$, $u_i = u_{\pi(i)} \circ \pi$. 
+\end{definition}
+
+	In a standard symmetric game, while being indifferent between which position they play, each player may care about the arrangement of their opponents, or alternatively may distinguish between their opponents.
+
+	\begin{example} \label{stdsymeg} Standard symmetric 3-player game.
+		\begin{center}
+  		\begin{game}{2}{2}[$(a,,)$]
+				\>  $a$      \>  $b$      \\
+			$a$	\>  $1,1,1$  \>  $3,7,4$  \\
+			$b$	\>  $7,4,3$  \>  $6,5,8$  
+		\end{game}
+		\hspace*{5mm}
+		\begin{game}{2}{2}[$(b,,)$]
+				\>  $a$      \>  $b$      \\
+			$a$	\>  $4,3,7$  \>  $8,6,5$  \\
+   			$b$	\>  $5,8,6$  \>  $2,2,2$  
+		\end{game}
+		\end{center}
+		
+		The reader may like to verify that $\Gamma$ is invariant under $(123)$ and not invariant under $(12)$. Since $\langle (123)\rangle = \{e, (123), (132)\}$ is a transitive subgroup of $S_3$, $\Gamma$ is standard symmetric. Furthermore since $(12)$ is not an invariant the players are not indifferent between all possible position arrangements.
+		
+		A useful analogy for considering the fairness of $\Gamma$ is a game with three players sitting in a circle such that each player is indifferent between circular rotations of positions, and not indifferent to their opponents swapping positions. A similar notion of fairness/symmetry is often used by the author when coding map generators for artificial intelligence programming contests where users write bots to play games against each other. The maps are two dimensional grids with the edges wrapped, ie. on the surface of a torus, and constructed in such a way that everyone is indifferent between some reorderings of the players.
+	\end{example}
+	
+	We obtain a stronger level of fairness by requiring the players be indifferent between all possible position rearrangements, that is by requiring all player permutations be invariants.
+
+\begin{definition} \label{fullsymdef}
+	$\Gamma$ is \textit{fully symmetric} if it is invariant under $S_N$.
+\end{definition}
+
+The reader may like to verify that Example \ref{fullsymeg} is invariant under the permutations $(12)$ and $(123)$. For example, let $\pi = (123)$, then $\pi(s_1, s_2, s_3) = (s_3, s_1, s_2)$ giving us $u_1(b, a, a) = u_2(a, b, a) = u_3(a, a, b) = 3$. Since invariants are closed under composition and $\langle (12), (123)\rangle = S_3$, Example \ref{fullsymeg} is fully symmetric. 
+
+Next we establish that Definition \ref{fullsymdef} can be characterised by various conditions. 
+
+\begin{theorem} \label{basicsymequivthm}
+	The following conditions are equivalent:
+	\begin{enumerate}
+		\item $\Gamma$ is fully symmetric;
+		\item $\Gamma$ is standard symmetric and weakly anonymous;
+		\item For each $i \in N$ and $\pi \in S_N$, $u_{\pi(i)} = u_i \circ \pi^{-1}$; 
+		\item For each $i \in N$ and $\tau \in T_N$, $u_i = u_{\tau(i)} \circ \tau$; and
+		\item For each $i \in N$ and $\tau \in T_N$, $u_i = u_{\tau(i)} \circ \tau^{-1}$.
+	\end{enumerate}
+	
+	\begin{proof}		
+		Condition (ii) follows trivially from Condition (i). Now suppose Condition (ii) is satisfied and let $H$ be a transitive subgroup of player permutations under which $\Gamma$ is invariant. Let $\pi \in S_N$, $i \in N$ and $\tau \in H$ such that $\tau(i) = \pi(i)$. Since $(\tau^{-1} \circ \pi) \in S_{N-\{i\}}$ it follows from weak anonymity that $u_i = u_i \circ (\tau^{-1} \circ \pi)$. It also follows from standard symmetry that $u_i = u_{\tau(i)} \circ \tau$, putting these two bits of information together we have $u_i = u_i \circ (\tau^{-1} \circ \pi) = (u_{\tau(i)} \circ \tau) \circ (\tau^{-1} \circ \pi) = u_{\tau(i)} \circ (\tau \circ \tau^{-1}) \circ \pi = u_{\tau(i)} \circ \pi = u_{\pi(i)} \circ \pi$.
+	
+		Suppose Condition (i) is satisfied, then for each $i \in N$ and $\pi \in S_N$, $u_{\pi(i)} = u_{\pi(i)} \circ (\pi \circ \pi^{-1}) = (u_{\pi(i)} \circ \pi) \circ \pi^{-1} = u_i \circ \pi^{-1}$. The converse works the same in reverse giving equivalence of Conditions (i) and (iii). 
+		
+		Condition (i) implies Condition (iv) since $T_N \subseteq S_N$, and Condition (iv) implies Condition (i) directly from Corollary \ref{utilityactionprop} and that $\langle{T_N}\rangle = S_N$. Conditions (iv) and (v) are equivalent since each transposition is its own inverse.
+	\end{proof}
+\end{theorem}
+
+Condition (iii) in Theorem \ref{basicsymequivthm} was used by von Neumann and Morgenstern \cite{VNM}, which was ideal for their chosen notation of permutations acting on the right of players and strategy profiles. Of course any generating set of $S_N$ may replace $T_N$ in Condition (iv) of Theorem \ref{basicsymequivthm}.
+
+It is worth noting that it is easy to mistakenly use the following inequivalent condition: for each $i \in N$ and $\pi \in S_N$, $u_i = u_{\pi(i)} \circ \pi^{-1}$ \cite[Definition 7]{DMaskin}. However this does not permute the players and strategy profiles correctly as the right hand side does not have player $\pi(i)$ playing the strategy that player $i$ is playing, which we illustrate using Example \ref{fullsymeg}. 
+
+Let $\pi = (123) \in S_3$, the incorrect condition given in \cite[Definition 7]{DMaskin} requires that for each $i \in N$ and $(s_1, s_2, s_3) \in A$, we have $u_i(s_1, s_2, s_3) = u_{\pi(i)}(s_{\pi(1)}, s_{\pi(2)}, s_{\pi(3)}) = u_{\pi(i)}(s_2, s_3, s_1)$. By considering $(b, a, a) \in A$, we see that $3 = u_1(b, a, a) \neq u_2(a, a, b) = 2$. It should be fairly obvious that if we are mapping player 1 to player 2 and player 1 is playing $b$ then we want the mapped strategy profile to have player 2 playing $b$.
+
+Since $T_N \subseteq S_N$, it follows from Condition (v) in Theorem \ref{basicsymequivthm} that the incorrect condition in \cite[Definition 7]{DMaskin} is somewhat surprisingly a more restrictive condition than the conditions in Theorem \ref{basicsymequivthm}. When $n=2$, since each transposition is its own inverse, the incorrect condition in \cite[Definition 7]{DMaskin} is equivalent to the conditions in Theorem \ref{basicsymequivthm}. We now establish that for $n \geq 3$ the incorrect condition in \cite[Definition 7]{DMaskin} is equivalent to the condition for a game being fully anonymous. 
+
+\begin{lemma} \label{brandtlemma}
+	\cite{brandt2009symmetries} The following conditions are equivalent:
+	\begin{enumerate}
+		\item $\Gamma$ is fully anonymous; and
+		\item $\Gamma$ is fully symmetric and $u_i = u_j$ for all $i, j \in N$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{lemma} \label{DMlemma}
+	Let $\pi, \tau \in S_N$. If $u_i = u_{\pi(i)} \circ \pi^{-1} = u_{\tau(i)} \circ \tau^{-1}$ for all $i \in N$ then $u_i = u_{(\tau \circ \pi)(i)} \circ (\pi \circ \tau)^{-1}$ for all $i \in N$.
+	\begin{proof}
+		For each $i \in N$, $u_i = u_{\pi(i)} \circ \pi^{-1} = (u_{\tau(\pi(i))} \circ \tau^{-1}) \circ \pi^{-1} = u_{(\tau \circ \pi)(i)} \circ (\pi \circ \tau)^{-1}$.
+	\end{proof}
+\end{lemma}
+
+\begin{theorem} \label{DMprop}
+	If $n \geq 3$ then the following conditions are equivalent:
+	\begin{enumerate}
+		\item $\Gamma$ is fully symmetric and $u_i = u_j$ for all $i, j \in N$; and
+		\item For each $i \in N$ and $\pi \in S_N$, $u_i = u_{\pi(i)} \circ \pi^{-1}$.
+	\end{enumerate}
+	\begin{proof}
+		Suppose Condition (i) holds, then for each $i \in N$ and $\pi \in S_N$, $u_i = u_{\pi^{-1}(i)} \circ \pi^{-1} = u_{\pi(i)} \circ \pi^{-1}$. Conversely suppose Condition (ii) holds, and hence that $\Gamma$ is fully symmetric. Let $i, j, k \in N$ be distinct. Since $(ik) \circ (ijk) \circ (jk) = (ijk)$ and $\bigl((jk) \circ (ijk) \circ (ik)\bigr)^{-1} = (ik) \circ (ikj) \circ (jk) =  e$, it follows from Lemma \ref{DMlemma} that $u_i = u_j$. 
+	\end{proof}
+\end{theorem}
+
+We conclude this subsection by providing the reader with an accurate historical account of the mistake from \cite[Definition 7]{DMaskin} being identified. The mistake was first pointed out by the author with an edit on the 4\textsuperscript{th} of May 2011 to the Wikipedia page for symmetric games, which the author then revised on the 8\textsuperscript{th} of May 2011 due to not having a published reference for the author's claim that the definition is incorrect. Both of these edits are visible on the Wikipedia revision history for the symmetric games page \cite{WikiSGRV}. The mistake was also pointed out in the author's 2011 honours thesis \cite[Subsection 5.8]{ham2011honoursthesis}.
+
+Upon contacting the authors from \cite{DMaskin} in 2018, the author received a response from Maskin suggesting that they made a slight mistake, unintentionally making the definition of symmetry given stronger than intended. Maskin suggested the mistake did not affect their own results, but has had the unfortunate effect of possibly leading other researchers astray. Prior to 2011 \cite{DMaskin} had 949 citations, and as at December 2018 it has 1,374 citations, so the author feels it is a good idea for the mistake to be noted to hopefully avoid any researchers being led astray in the future.
+
+The mistake was also pointed out independently by Vester in his 2012 Masters thesis \cite[Appendix B]{vester2012symmetric}, who also proved the statement in Theorem \ref{DMprop}. Theorem \ref{DMprop} does not appear in the author's honours thesis, a proof was first released by the author publicly with the first revision of this paper uploaded to the arXiv November 2013, see \cite[Version 1]{ham2018arxivversion}. Hence credit goes to Vester for first releasing a proof publicly, see \cite[Theorem 32]{vester2012symmetric}.
+
+Further, Tohm\'{e} and Viglizzo also proved the statement in Theorem \ref{DMprop} which they released in 2017, see \cite[Lemma 2.10]{ViglizzoarXiv}, however do not appear to have realised that the conditions in \cite[Defintion 7]{DMaskin} were unintentionally stronger than intended.
