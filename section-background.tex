@@ -7,8 +7,13 @@
 		\item For each $i \in N$ and $s = (s_1, \ldots, s_{i-1}, s_i, s_{i+1}, \ldots, s_n) \in A$ we denote $(s_1, \ldots, s_{i-1}, s_{i+1}, \ldots, s_n) \in A_{-i}$ as $s_{-i}$;
 		\item For each $s_i \in A_i$ and $s_{-i} = (s_1, \ldots, s_{i-1}, s_{i+1}, \ldots, s_n) \in A_{-i}$ we denote $(s_1, \ldots, s_{i-1}, s_i, s_{i+1}, \ldots, s_n) \in \times_{i \in N} A_i$ as $(s_i, s_{-i})$ or $s$, whichever is contextually convenient;
 		\item For each $k \in N$ and distinct $i_1, \ldots, i_k \in N$ we denote $N - \{i_1, \ldots, i_k\}$ as $N_{-i_1 - \ldots - i_k}$, for example $N_{-1 - \ldots - k} = \set{k+1, \ldots, n}$;
-		\item For each $k \in N-\{n\}$ and distinct $i_1, \ldots, i_k \in N$ we denote ${\left({(A_{-i_1})}_{-i_2}\ldots\right)}_{-i_k} = A_{{-i_1}_{{-i_2}_{\ldots_{-i_k}}}} = \times_{i \in N-\{i_1, \ldots, i_k\}}A_i$ as $A_{-i_1 - \ldots - i_k}$; and
-		\item For each $s \in A$, $k \in N-\{n\}$ and distinct $i_1, \ldots, i_k \in N$ we denote ${\left({(s_{-i_1})}_{-i_2}\ldots\right)}_{-i_k} = s_{{-i_1}_{{-i_2}_{\ldots_{-i_k}}}} \in A_{-i_1 - \ldots - i_k} = \times_{i \in N-\{i_1, \ldots, i_k\}}A_i$ as $s_{-i_1 - \ldots - i_k}$;
+		\item For each $k \in N-\{n\}$ and distinct $i_1, \ldots, i_k \in N$ we denote
+		\begin{align*}
+			{\left({(A_{-i_1})}_{-i_2}\ldots\right)}_{-i_k} &= A_{{-i_1}_{{-i_2}_{\ldots_{-i_k}}}} \\
+			&= \times_{i \in N-\{i_1, \ldots, i_k\}}A_i	
+		\end{align*}
+		as $A_{-i_1 - \ldots - i_k}$; and
+		\item For each $s \in A$, $k \in N-\{n\}$ and distinct $i_1, \ldots, i_k \in N$ we denote \[{\left({(s_{-i_1})}_{-i_2}\ldots\right)}_{-i_k} = s_{{-i_1}_{{-i_2}_{\ldots_{-i_k}}}} \in A_{-i_1 - \ldots - i_k} = \times_{i \in N-\{i_1, \ldots, i_k\}}A_i\] as $s_{-i_1 - \ldots - i_k}$;
 		\item For each $k \in N-\{n\}$, distinct $i_1, \ldots, i_k, j \in N$ and $s_{-i_1 - \ldots - i_k} \in A_{-i_1 - \ldots - i_k}$ we denote the element of $A_j$ used in $s_{-i_1 - \ldots - i_k}$ as ${(s_{-i_1 - \ldots - i_k})}_j$, note if $j>\min\set{i_l: l\in\{1, \ldots, k\}}$ then this will not be position $j$ of the $(n-k)$-tuple $s_{-i_1 - \ldots - i_k}$.
 	\end{enumerate}
 	
@@ -289,7 +294,7 @@
 		Given a zero-sum game $(N, A, u)$, for each $i \in N$, $(\set{i, -i}, A_i\times{A_{-i}}, u^*_i\times u^*_{-i})$ is a $2$-player zero-sum game where $u^*_i = u$ and $u^*_{-i} = \Sigma_{j \in N-\{i\}}u_i$. Since what we would want for $A^*_{-i}$ is just $A_{-i}$ we do not bother complicating our notation further, similarly with $A_i$. 
 		
 		\begin{proof}
-			Note that we have two players, $i$ and $-i$, each with a finite number of strategies, and for each $s \in A_i$ and $s_{-i} \in A_{-i}$ we have $u^*_i(s) = u_i(s)$ and $u^*_{-i}(s) = \Sigma_{j \in N-\{i\}} u_i(s)$, hence $u^*_i(s) + u^*_{-i}(s) = u_1(s) + \ldots u_n(s) = 0$.
+			Note that we have two players, $i$ and $-i$, each with a finite number of strategies, and for each $s \in A_i$ and $s_{-i} \in A_{-i}$ we have $u^*_i(s) = u_i(s)$ and $u^*_{-i}(s) = \Sigma_{j \in N-\{i\}} u_i(s)$, hence $u^*_i(s) + u^*_{-i}(s) = u_1(s) + \ldots + u_n(s) = 0$.
 		\end{proof}
 	\end{proposition}
 	

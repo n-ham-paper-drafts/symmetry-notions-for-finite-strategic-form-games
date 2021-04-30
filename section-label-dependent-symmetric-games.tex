@@ -30,7 +30,12 @@ Given $\pi \in S_N$ we denote the map $s \mapsto u_{\pi(i)}\bigl(\pi(s)\bigr)$ a
 \begin{corollary} \label{utilityactionprop}
 	For each $\pi, \tau \in S_N$, $u_{(\tau \circ \pi)(i)} \circ (\tau \circ \pi) = (u_{\tau(\pi(i))} \circ \tau) \circ \pi$.
 	\begin{proof}
-		For each $i \in N$, $s \in A$, $\left(u_{(\tau \circ \pi)(i)} \circ (\tau \circ \pi)\right)(s) = u_{(\tau \circ \pi)(i)}\Bigl((\tau \circ \pi)(s)\Bigr) = u_{\tau(\pi(i))}\Bigl(\tau\bigl(\pi(s)\bigr)\Bigr) = \left((u_{\tau(\pi(i))} \circ \tau) \circ \pi\right)(s)$.
+		For each $i \in N$, $s \in A$, 
+		\begin{align*}
+			\left(u_{(\tau \circ \pi)(i)} \circ (\tau \circ \pi)\right)(s) &= u_{(\tau \circ \pi)(i)}\Bigl((\tau \circ \pi)(s)\Bigr) \\
+			&= u_{\tau(\pi(i))}\Bigl(\tau\bigl(\pi(s)\bigr)\Bigr) \\
+			&= \left((u_{\tau(\pi(i))} \circ \tau) \circ \pi\right)(s).
+		\end{align*}
 	\end{proof}
 \end{corollary}
 
@@ -209,71 +214,6 @@ In a fully anonymous game each player is indifferent between which position they
 
 Note that the published version of \cite{brandt2009symmetries} refers to weakly anonymous, anonymous and fully anonymous games as \textit{weakly symmetric}, \textit{weakly anonymous} and \textit{strongly anonymous games} respectively. The reason for this is the author finds using the symmetric terminology in the context of anonymity rather confusing when it is already the convention to use the term symmetric for notions of symmetry/fairness. Further, since the anonymity notion that \cite{brandt2009symmetries} refer to as weakly symmetric is not the weakest of the three anonymity notions, the author has instead chosen to refer to them as simply anonymous, and so what \cite{brandt2009symmetries} refer to as weakly symmetric the author refers to as weakly anonymous. The author uses fully anonymous instead of strongly anonymous to be consistent with the terminology used for notions of symmetry/fairness.
 
-\subsection{Notions of Fairness (work in progress)} \label{subsec:labeldepnotionsoffairness}
-Interestingly, fairness has not appeared much in the game theory literature. Here we review where the term fair has appeared, introduce several new notions of fairness and begin examining how they relate to one another. Note that we will revisit these notions of fairness several times through the remainder of the paper.
-
-\begin{definition}
-	A $2$-player zero-sum game is \textit{fair} (cite von Neumann) if its value is $0$.
-\end{definition}
-
-\begin{proposition} 
-	(von Neumann) If a $2$-player zero-sum game is fully symmetric then it is fair. 
-\end{proposition}
-
-\begin{definition}
-	We shall refer to a game $\Gamma = (N, A, u)$ as:
-	\begin{enumerate}
-		\item \textit{maximin fair} if $\underline{u}_i = \underline{u}_j$ for all $i, j \in N$;
-		\item \textit{minimax fair} if $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
-		\item \textit{very-weakly-fair} if $\underline{u}_i = \underline{u}_j$ and $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
-		\item \textit{weakly-fair} if $\underline{u}_i = \overline{u}_i = \underline{u}_j = \overline{u}_j$ for all $i, j \in N$; and
-		\item \textit{fair} if $\underline{u}_i = \overline{u}_i = 0$ for all $i \in N$;
-		\item \textit{standard strictly fair} if the 
-		\item \textit{fully strictly fair} if
-		\item \textit{standard ordinally fair} if there is a transitive subgroup of player permutations that preserve preferences over pure strategy profiles (need to work out how to phrase this and establish that it is precise/concrete/unambiguous);
-		\item \textit{fully ordinally fair} 
-		\item \textit{standard cardinally fair} if there is a transitive subgroup of player permutations that preserve preferences over mixed strategy profiles (need to work out how to phrase this and establish that it is precise/concrete/unambiguous, including if the players are indifferent between the positions of their opponents up to preserving preferences over the pure strategies when the strategy sets are matched up). 
-		\item \textit{fully cardinally fair} if the players are indifferent between the positions of their opponents up to preserving preferences over the mixed strategy profiles when the strategy sets are matched up (need to work out how to phrase this and establish that it is precise/concrete/unambiguous).
-	\end{enumerate}
-\end{definition}
-
-\begin{definition}
-	(don't need this anymore) We shall refer to a game $\Gamma = (N, A, u)$ as \textit{maximin fair} and \textit{minimax fair} if for each $i, j \in N$:
-	\begin{align*}
-		\text{(i) } \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) &= \max_{\theta_j \in \Delta(A_j)}\min_{\theta_{-j} \in {\nabla(A)}_{-j}} u_j(\theta_j, \theta_{-j}); \text{ and} \\
-		\text{(ii) } \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) &= \min_{\theta_{-j} \in {\nabla(A)}_{-i}}\max_{\theta_j \in \Delta(A_j)} u_j(\theta_j, \theta_{-j}).
-	\end{align*}
-\end{definition}
-
-Need to check whether the following holds in the label-independent case. 
-
-\begin{proposition} \label{prop:standsymgamesaremaxminandminmaxfair}
-	If a (zero-sum) game $\Gamma = (N, A, u)$ is standard symmetric then it is maximin fair and minimax fair.
-	
-	\begin{proof}
-		Since $\Gamma$ is standard symmetric there exists a transitive subgroup of the game invariants $T$ such that for each $\pi \in T$, $u_i = u_i \circ \pi$ for all $i \in N$. For each $i, j \in N$, since $T$ is transitive there exists $\pi \in T$ such that $\pi(i) = j$. Using $u_i = u_{\pi(i)} \circ \pi = u_j \circ \pi$, rearranging and then changing variables we have:
-		\begin{align*}
-			\text{(i) }\max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) &= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \Delta(A)_{-i}} u_i(\sigma) \\
-			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} (u_{\pi(i)} \circ \pi)(\sigma) \\
-			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma)\right) \\
-			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma)_j, \pi(\sigma)_{-j}\right) \\
-			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma_i), \pi(\sigma_{-i})\right) \\
-			&= \max_{\theta_j \in \Delta(A_j)}\min_{\theta_{-j} \in {\nabla(A)}_{-j}} u_j(\theta_j, \theta_{-j}); \text{ and} \\
-			\text{(ii) }\min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) &= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma) \\
-			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} (u_{\pi(i)} \circ \pi)(\sigma) \\
-			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma)\right) \\
-			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma)_j, \pi(\sigma)_{-j}\right) \\
-			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma_i), \pi(\sigma_{-i})\right) \\
-			&= \min_{\theta_{-j} \in {\nabla(A)}_{-j}}\max_{\theta_j \in \Delta(A_j)} u_j(\theta_j, \theta_{-j}). 
-		\end{align*} 
-	\end{proof}
-\end{proposition}
-
-It was established by von Neumann and Morgenstern \cite[Pages 165-166]{VNM} that every $2$-player standard symmetric zero-sum game is fair. 
-
-Need to determine whether a zero-sum standard symmetric game $\Gamma = (N, A, u)$ is necessarily fair.
-
-
 \subsection{Notions of Symmetry} \label{subsec:labeldepnotionsofsymmetry}
 Our broad requirements for fairness that players be indifferent between which position they play may be made more precise by requiring the invariants of a game be a transitive subgroup of $S_N$.
 
@@ -373,3 +313,55 @@ Upon contacting the authors from \cite{DMaskin} in 2018, the author received a r
 The mistake was also pointed out independently by Vester in his 2012 Masters thesis \cite[Appendix B]{vester2012symmetric}, who also proved the statement in Theorem \ref{DMprop}. Theorem \ref{DMprop} does not appear in the author's honours thesis, a proof was first released by the author publicly with the first revision of this paper uploaded to the arXiv November 2013, see \cite[Version 1]{ham2018arxivversion}. Hence credit goes to Vester for first releasing a proof publicly, see \cite[Theorem 32]{vester2012symmetric}.
 
 Further, Tohm\'{e} and Viglizzo also proved the statement in Theorem \ref{DMprop} which they released in 2017, see \cite[Lemma 2.10]{ViglizzoarXiv}, however do not appear to have realised that the conditions in \cite[Defintion 7]{DMaskin} were unintentionally stronger than intended.
+
+\subsection{Notions of Fairness} \label{subsec:labeldepnotionsoffairness}
+Interestingly, fairness has not appeared much in the game theory literature. Here we review where the term fair has appeared, introduce several new notions of fairness and begin examining how they relate to one another. Note that we will revisit these notions of fairness several times through the remainder of the paper.
+
+\begin{definition}
+	A $2$-player zero-sum game is \textit{fair} \cite[17.11, 28.1, 28.2]{VNM} if its value is $0$.
+\end{definition}
+
+\begin{proposition} 
+	\cite{VNM} If a $2$-player zero-sum game is fully symmetric then it is fair. 
+\end{proposition}
+
+\begin{definition}
+	We shall refer to a game $\Gamma = (N, A, u)$ as:
+	\begin{enumerate}
+		\item \textit{maximin fair} if $\underline{u}_i = \underline{u}_j$ for all $i, j \in N$;
+		\item \textit{minimax fair} if $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
+		\item \textit{very-weakly-fair} if $\underline{u}_i = \underline{u}_j$ and $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
+		\item \textit{weakly-fair} if $\underline{u}_i = \overline{u}_i = \underline{u}_j = \overline{u}_j$ for all $i, j \in N$; 
+		\item \textit{fair} if $\underline{u}_i = \overline{u}_i = 0$ for all $i \in N$;
+		\item \textit{standard strictly fair} if utility values are preserved under a transitive subgroup of the player permutations;
+		\item \textit{fully strictly fair} if utility values are preserved under all player permutations;
+		\item \textit{standard ordinally fair} if there is a transitive subgroup of player permutations that preserve preferences over pure strategy profiles;
+		\item \textit{fully ordinally fair} if all player permutations preserve preferences over pure strategy profiles;
+		\item \textit{standard cardinally fair} if there is a transitive subgroup of player permutations that preserve preferences over mixed strategy profiles; and
+		\item \textit{fully cardinally fair} if all player permutations preserve preferences over mixed strategy profiles.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition} \label{prop:standsymgamesaremaxminandminmaxfair}
+	If a (zero-sum) game $\Gamma = (N, A, u)$ is standard symmetric then it is maximin fair and minimax fair.
+	
+	\begin{proof}
+		Since $\Gamma$ is standard symmetric there exists a transitive subgroup of the game invariants $T$ such that for each $\pi \in T$, $u_i = u_i \circ \pi$ for all $i \in N$. For each $i, j \in N$, since $T$ is transitive there exists $\pi \in T$ such that $\pi(i) = j$. Using $u_i = u_{\pi(i)} \circ \pi = u_j \circ \pi$, rearranging and then changing variables we have:
+		\begin{align*}
+			\text{(i) }\max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_i(\sigma_i, \sigma_{-i}) &= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \Delta(A)_{-i}} u_i(\sigma) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} (u_{\pi(i)} \circ \pi)(\sigma) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma)\right) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma)_j, \pi(\sigma)_{-j}\right) \\
+			&= \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in {\nabla(A)}_{-i}} u_j\left(\pi(\sigma_i), \pi(\sigma_{-i})\right) \\
+			&= \max_{\theta_j \in \Delta(A_j)}\min_{\theta_{-j} \in {\nabla(A)}_{-j}} u_j(\theta_j, \theta_{-j}); \text{ and} \\
+			\text{(ii) }\min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}) &= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_i(\sigma) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} (u_{\pi(i)} \circ \pi)(\sigma) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma)\right) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma)_j, \pi(\sigma)_{-j}\right) \\
+			&= \min_{\sigma_{-i} \in {\nabla(A)}_{-i}}\max_{\sigma_i \in \Delta(A_i)} u_j\left(\pi(\sigma_i), \pi(\sigma_{-i})\right) \\
+			&= \min_{\theta_{-j} \in {\nabla(A)}_{-j}}\max_{\theta_j \in \Delta(A_j)} u_j(\theta_j, \theta_{-j}). 
+		\end{align*} 
+	\end{proof}
+\end{proposition}
+
+The reader may like to verify that Proposition \ref{prop:standsymgamesaremaxminandminmaxfair} holds in the label-independent case. It was established by von Neumann and Morgenstern \cite[Pages 165-166]{VNM} that every $2$-player standard symmetric zero-sum game is fair. The reader may also like to determine whether a zero-sum standard symmetric game $\Gamma = (N, A, u)$ is necessarily fair.
