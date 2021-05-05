@@ -21,8 +21,8 @@ Our second reason is that there are weaker notions of fairness that cannot be ca
 	\begin{definition}
 		A \textit{game bijection} from $\Gamma_1 = (N, A, u)$ to $\Gamma_2 = (M, B, v)$ consists of a bijection $\pi:N\rightarrow M$ and for each player $i \in N$, a bijection $\tau_i:A_i\rightarrow B_{\pi(i)}$, which we denote as $\bigl(\pi; (\tau_i)_{i \in N}\bigr)$.
 	\end{definition}
-	
-	We denote the set of game bijections from $\Gamma_1$ to $\Gamma_2$ as $\bij(\Gamma_1, \Gamma_2)$, or simply $S_{\Gamma}$ for the bijections from a game $\Gamma$ to itself. Let $g = \bigl(\pi; (\tau_i)_{i \in N}\bigr) \in \bij(\Gamma_1, \Gamma_2)$, $i \in N$, $s_i \in A_i$ and $s \in A$, using similar notation to our label-dependent framework we denote $\pi(i)$ as $g(i)$, $\tau_i(s_i)$ as $g(s_i)$, $\bigl(\tau_{\pi^{-1}(j)}(s_{\pi^{-1}(j)})\bigr)_{j \in M} \in B$ as $g(s)$ giving $\bigl(g(s)\bigr)_{g(i)} = \tau_i(s_i) = g(s_i)$, and the map $s \mapsto u_{g(i)}\bigl(g(s)\bigr)$ as $u_{g(i)} \circ g$. 	
+
+	More on game bijections can be found in \cite{IsoComplexity}. We denote the set of game bijections from $\Gamma_1$ to $\Gamma_2$ as $\bij(\Gamma_1, \Gamma_2)$, or simply $S_{\Gamma}$ for the bijections from a game $\Gamma$ to itself. Let $g = \bigl(\pi; (\tau_i)_{i \in N}\bigr) \in \bij(\Gamma_1, \Gamma_2)$, $i \in N$, $s_i \in A_i$ and $s \in A$, using similar notation to our label-dependent framework we denote $\pi(i)$ as $g(i)$, $\tau_i(s_i)$ as $g(s_i)$, $\bigl(\tau_{\pi^{-1}(j)}(s_{\pi^{-1}(j)})\bigr)_{j \in M} \in B$ as $g(s)$ giving $\bigl(g(s)\bigr)_{g(i)} = \tau_i(s_i) = g(s_i)$, and the map $s \mapsto u_{g(i)}\bigl(g(s)\bigr)$ as $u_{g(i)} \circ g$. 	
 	
 	\begin{example} \label{egisomgames}
 		Consider the following $2$-player games.            
@@ -107,7 +107,7 @@ Our second reason is that there are weaker notions of fairness that cannot be ca
 		A bijection $g \in \bij(\Gamma_1, \Gamma_2)$ is a \textit{game isomorphism} if $u_i = v_{g(i)}\circ g$ for all $i \in N$. 
 	\end{definition}
 
-	We denote by $\isom(\Gamma_1, \Gamma_2)$ the set of isomorphisms from $\Gamma_1$ to $\Gamma_2$. The reader may like to verify that the bijection in Example \ref{egisomgames} is in fact an isomorphism. For example, $u_1(a, d) = v_{g(1)}\bigl(g(a, d)\bigr) = v_2(e, h)$.
+	We denote by $\isom(\Gamma_1, \Gamma_2)$ the set of isomorphisms from $\Gamma_1$ to $\Gamma_2$, and write $\Gamma_1 \cong \Gamma_2$ when $\isom(\Gamma_1, \Gamma_2)$ is non-empty. The reader may like to verify that the bijection in Example \ref{egisomgames} is in fact an isomorphism. For example, $u_1(a, d) = v_{g(1)}\bigl(g(a, d)\bigr) = v_2(e, h)$.
             
 	\begin{theorem} 
 		Game isomorphisms form a groupoid.

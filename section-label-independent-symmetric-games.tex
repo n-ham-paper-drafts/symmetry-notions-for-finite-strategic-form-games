@@ -65,13 +65,7 @@ We will see in Example \ref{sixplayereg} that games which have a transitive subg
 \subsection{Fairness Discussion} \label{subsec:fairnessdiscussion}
 So far we have considered many notions of symmetry, see Subsections \ref{subsec:labeldepnotionsofsymmetry} and \ref{subsec:labelindepnotionsofsymmetry}, which we have also been referring to as notions of fairness. 
 
-When the author was explaining the similarities between symmetry and fairness in the context of games to James East, James posed the analogy of cake cutting to the author. Among numerous relevant topics within the area of fair division, there are several types of problems that have been studied, for example:
-\begin{enumerate}
-	\item Fair cake-cutting - dividing a set of divisible and heterogeneous goods. The problem is called fair pie-cutting when the cake is a circle;
-	\item Fair chore division - dividing a set of divisible and heterogeneous bads;
-	\item Fair item assignment - dividing a set of indivisible and heterogeneous goods; and
-	\item Fair resource allocation - dividing a set of divisible and homogeneous goods.
-\end{enumerate}
+When the author was explaining the similarities between symmetry and fairness in the context of games to James East, James posed the analogy of cake cutting to the author. Among numerous relevant topics within the area of fair division, there are several types of problems that have been studied, for example: fair cake-cutting, fair chore division, fair item assignment and fair resource allocation.
 
 The literature for fair cake-cutting dates back to at least 1948, for example see Steinhaus \cite{Steinhauscakecutting} which begins in the first paragraph by suggesting the custom ``of dividing an object into two equal parts by letting one partner halve it and the other choose his half" was already probably many centuries old. Hundreds of papers on the topic have appeared since, referencing them here would drown out the references more relevant to the bulk of this paper. 
 
@@ -160,7 +154,7 @@ Without further examination or further discussion this may leave one doubting wh
 	\item strongly symmetric in the context of shape division is analogous to defining a game as strongly symmetric if the game has an automorphism not equal to the identity but that does use the identity player pemutation.
 \end{enumerate}
 
-Neither of these have been considered notions of symmetry for games in this paper, or really anywhere in the literature, with the exception of \cite{ViglizzoarXiv} who define partial symmetries in games for when some players are indifferent between various positions in a game, but not indifferent between all positions. 
+Neither of these have been considered notions of symmetry for games in this paper, or really anywhere in the literature, with the exception of \cite{tohme2019structural} who define partial symmetries in games for when some players are indifferent between various positions in a game, but not indifferent between all positions. 
 
 The notions of symmetry for games that we have considered would be closer to the following notions of symmetry for dividing shapes. 
 
@@ -181,10 +175,6 @@ Note all $n$-transitively symmetric shape divisions are transitively symmetric, 
 
 Since both all $n$-transitively symmetric shape divisions and all transitively symmetric shape divisions are fair, it is reasonable to refer to these as notions of fairness for dividing shapes. 
 
-Note the example on the right in Figure \ref{fig:cakecuts} is fair and neither transitively or $n$-transitively symmetric. What does this mean? (obviously fairness isn't captured by transitively or $n$-transitively symmetric, what about for games? Is fairness captured by a game being (transitively) symmetric? Maybe that should lead on to the zero sum discussion? Which might dictate how fairness is discussed prior in the paper, and will probably/likely dictate the next paragraph).
-
-Now consider the notion of fairness for games that players be indifferent between which position they play. What is meant by players being indifferent between which position they play? In the case of zero-sum games, it is common to define fairness based on the (expected/minimax).
-
 Recall from Section \ref{sec:intro} that the term fair has appeared in the context of zero-sum games, noting that zero-sum games are a subclass of strategic-form games. For example a $2$-player zero-sum game is defined as fair when the (minimax or expected) value of the game is $0$, ie. when the expected payoff under perfect play for both players is $0$. This gives us another notion for zero-sum games of players being indifferent between which position they play. 
 
 A $2$-player zero-sum game can be fair without both players having the same number of strategies, so clearly a $2$-player zero-sum game being fair does not imply that it satisfies any of the notions of symmetry defined in this paper. Nor does it really seem to make much sense to refer to a fair $2$-player zero-sum game as symmetric. 
@@ -198,48 +188,9 @@ A $2$-player zero-sum game can be fair without both players having the same numb
 	\end{proof}
 \end{theorem}
 
-%which is both the smallest payoff the minimising player can ensure the maximising player can obtain and the largest payoff the maximising player can ensure the minimising player can obtain.
-
-\begin{enumerate}
-	\item Does there exist fair $2$-player $m$-strategy zero-sum games that are not symmetric?
-	\item What happens if we define a game as fair if both players have the same minimax and maximin values? 
-	\item Does there exist non-zero sum games where all players have minimax=maximin=0? Should these be considered fair?
-	\item What about when minimax = same for all players and maximin = same for all players? zero-sum and more generally?
-	\item What about when minimax = maximin = same for all players? 
-\end{enumerate}
-
 One of our notions of fairness for games is that players be indifferent between which position they play. Game isomorphisms establish that players are indifferent between playing the mapped positions for each game, in the case of game automorphisms we get players being indifferent between playing different positions in the same game. If the automorphism group of a game is player transitive, the players are indifferent between which position they play, consequently any notion of symmetry requiring the automorphism group be player transitive falls inside the notion of fairness that players be indifferent between which position they play. 
 
-Note however that the players may still care about the order/arrangement/positions of their opponents, which is the stronger notion of fairness for games that we have considered. Recall that players are indifferent between the order/arrangement/positions of their opponents when the automorphism group is player $n$-transitive.  
-
-Discuss utility and notions of fairness for shape division.
-Discuss game isomorphisms/automorphisms. 
-Mention AI! 
-
-This leads us to questions like:
-\begin{enumerate}
-	\item Are various definitions/notions of fair and symmetric equivalent/synonymous in the context of games?;
-	\item If they are not, are there cases where fair or symmetric implies the other?
-	\item Should we be using the term fair in the context of symmetric games? 
-\end{enumerate}
-
-Roadmap:
-\begin{enumerate}
-	\item von Neumann's definition of fair for zero-sum games works for all simultaneous-form games;
-	\item symmetric games are fair in the above sense (von neumann noted for the n-transitive symmetric case);
-	\item not all fair games are symmetric, so none of our notions of symmetric are equivalent to the above sense of fair;
-	\item would be good to check which types of symmetric games can be von neumann fair with examples for each possible combination, and find all the parameterised ones up to isomorphism, and count the number of strategically inequivalent games for each parameterised game, so getting the number of games for each symmetry notion up to ismorphism as well etc.
-	\item can generalise above sense of fair by requiring players have same maximin values and the same minimax values, and in between by also requiring the maximin values = minimax values;
-	\item symmetric games are fair in the sense of both generalisations above;
-	\item same as point 3 above because these are weaker senses of fair;
-	\item same as point 4 above;
-	\item von Neumann's sense of fair does not need to preserve the players' preferences over the (pure/mixed) strategy profiles, ie. does not need to preserve the strategic structure with regards to indifference between positions, so none of our notions of symmetry are captured by the vNM (or weaker) sense of fair (or vice versa);
-	\item fair in the sense of players' preferences over the (pure/mixed) strategy profiles is captured with ordinally/cardinally symmetric games (ie. ordinal/cardinal automorphisms are a transitive subgroup of the game bijections/permutations);
-	\item would be good to do ordinal/cardinal symmetric games in detail, and see whether we can do much in the way of examples and establishing which combinations are possible (may/should be possible in the cardinal case to argue based off what we learn from normal symmetric game situation);
-	\item fair in the sense of players' preferences over the mixed strategy profiles being represented by the exact same utility functions (so payoffs are exactly comparable) is captured by symmetric games (ie. automorphisms are a transitive subgroup of the game bijections/permutations);
-	\item hence our notions of symmetry do capture some notions of fairness (including n-transitively symmetric capturing the fairness notion of being indifferent between the positions of their opponents), unlike capturing the vNM (or weaker) notions of fairness, and unlike the first few notions of symmetry for shape divisions capturing our notion of fairness for shape divisions.
-\end{enumerate}
-
+Note however that the players may still care about the positions of their opponents, which is the stronger notion of fairness for games that we have considered.
 
 \subsection{Classifying A Game} \label{subsec:classifying}
 While our distinct symmetry notions give us various descriptive definitions of strategic fairness, they do not give us a constructive way to determine where a particular game lies. We now discuss various strategies for classifying a game which will be crucial later on when identifying examples for each combination of symmetry notions considered in this paper.
@@ -367,9 +318,9 @@ So far we have seen examples of fully symmetric, only-transitive standard symmet
 	\begin{tikzpicture}
 		nodes={draw, ultra thick}
 		\draw[thick] (0,0) circle (0.75cm);			\draw (0, 0) node {fully};
-		\draw[thick] (-1,0) ellipse (2.25cm and 1.5cm);	\draw (-2.25,0) node {standard};
-		\draw[thick] (1,0) ellipse (2.25cm and 1.5cm);	\draw (2.25,0) node {$n$-transitive};
-		\draw[thick] (0,0) ellipse (3.75cm and 2.25cm);	\draw (0,1.8) node {symmetric};
+		\draw[thick] (-1.5,0) ellipse (2.75cm and 1.5cm);	\draw (-2.5,0) node {standard};
+		\draw[thick] (1.5,0) ellipse (2.75cm and 1.5cm);	\draw (2.5,0) node {$n$-transitive};
+		\draw[thick] (0,0) ellipse (5.5cm and 2.25cm);	\draw (0,1.8) node {symmetric};
 	\end{tikzpicture}
 	\end{center}
 	\vspace{-0.5cm}

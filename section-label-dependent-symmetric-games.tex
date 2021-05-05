@@ -9,7 +9,7 @@ Given a player permutation $\pi \in S_N$ and strategy profile $s \in A$, two pos
 The author notes that our somewhat unintuitive notation has been chosen so that it matches with composition and inversion in an ideal manner. That is so for each $s \in A$, $(\tau \circ \pi)(s) = \tau\bigl(\pi(s)\bigr)$ and $(\tau \circ \pi)^{-1} = \pi^{-1} \circ \tau^{-1}$. 
 
 \begin{lemma} \label{simpleactionprop}
-	$s \mapsto \pi(s)$ is a left action of $S_N$ on $A$.
+	For each $s \in A$ and $\pi \in S_N$, $s \mapsto \pi(s)$ is a left action of $S_N$ on $A$.
 	\begin{proof}
 		The identity permutation trivially acts as an identity so we need only establish associativity. For each $\pi, \tau \in S_N$, $s \in A$ and $i \in N$, $\bigl((\tau \circ \pi)(s)\bigr)_i = s_{(\tau \circ \pi)^{-1}(i)} = s_{\pi^{-1}(\tau^{-1}(i))} = \bigl(\pi(s)\bigr)_{\tau^{-1}(i)} = \Bigl(\tau\bigl(\pi(s)\bigr)\Bigr)_i$.
 		
@@ -22,7 +22,7 @@ It might be worth explaining which bijections of $A$ we have using $\{s\mapsto\p
 Since $\pi^{-1}(s) = (s_{\pi(i)})_{i \in N}$ for all $s \in A$, $s \mapsto \pi(s)$ and $s \mapsto \pi^{-1}(s)$ are dual to each other. Hence the dual results hold for $\pi^{-1}$.
 
 \begin{lemma} 
-	$s \mapsto \pi^{-1}(s)$ is a right action of $S_N$ on $A$.
+	For each $s \in A$ and $\pi \in S_N$, $s \mapsto \pi^{-1}(s)$ is a right action of $S_N$ on $A$.
 \end{lemma}
 
 Given $\pi \in S_N$ we denote the map $s \mapsto u_{\pi(i)}\bigl(\pi(s)\bigr)$ as $u_{\pi(i)} \circ \pi$. Note that $u_{\pi(i)} \circ \pi$ is the utility function of player $\pi(i)$ when the strategy profiles are acted upon by the player permutation $\pi$.
@@ -58,10 +58,8 @@ This gives us $\pi(\sigma_i) = \pi(\sigma)_{\pi(i)} \in \Delta(A_{\pi(i)})$ and 
 	\end{proof}
 \end{proposition}
 
-Note that when $A_i = A_j$ for all $i, j \in N$, the following groupoids in Propositions \ref{prop:firstgroupoidprop} and \ref{prop:secondgroupoidprop} are all groups (or are they? the first yes but what about the second with regards to order/positions of the tuples?). (should they be rephrased, perhaps even with different notation?? what to denote the $A_i$'s as though? Maybe $A_0$? or $A'$ or $\overline{A}$ or $\underline{A}$ or do strategy profiles as $\mathcal{A}$ but would confuse people, as would using $\mathcal{A} = A^n$)
-
 \begin{proposition} \label{prop:firstgroupoidprop}
-	$\set{\sigma_i \mapsto \pi(\sigma_i): i \in N, \pi \in S_N}$ is a subgroupoid of $\set{\bij(\Delta(A_i), \Delta(A_j)): i, j \in N}$.
+	$\set{\sigma_i \mapsto \pi(\sigma_i): i \in N, \pi \in S_N}$ is a subgroupoid of $\cup_{i, j \in N}\bij(\Delta(A_i), \Delta(A_j))$.
 	
 	\begin{proof}		
 		Let $Y = \set{\sigma_i \mapsto \pi(\sigma_i): i \in N, \pi \in S_N}$.
@@ -76,7 +74,7 @@ Note that when $A_i = A_j$ for all $i, j \in N$, the following groupoids in Prop
 \end{proposition}
 
 \begin{proposition} \label{prop:secondgroupoidprop}
-	$\set{\sigma_{-i} \mapsto \pi(\sigma_{-i}): i \in N, \pi \in S_N}$ is a subgroupoid of $\set{\bij({\nabla(A)}_{-i}, {\nabla(A)}_{-j}): i, j \in N}$.
+	$\set{\sigma_{-i} \mapsto \pi(\sigma_{-i}): i \in N, \pi \in S_N}$ is a subgroupoid of $\cup_{i, j \in N}\bij({\nabla(A)}_{-i}, {\nabla(A)}_{-j})$.
 	
 	\begin{proof}
 		Let $Y = \set{\sigma_{-i} \mapsto \pi(\sigma_{-i}): i \in N, \pi \in S_N}$.
@@ -210,7 +208,7 @@ Anonymity may be strengthened also by requiring all players have the same payoff
 		The orbits of $A$ for the above game are the same as in Example \ref{anoneg}, however now all players have the same payoff for each orbit.
 	\end{example}
 	
-In a fully anonymous game each player is indifferent between which position they play. Hence fully anonymous games are one class of games that fall under our broad requirements for fairness. 
+In a fully anonymous game each player is indifferent between which position they play. Hence fully anonymous games are one class of games that fall under fairness. 
 
 Note that the published version of \cite{brandt2009symmetries} refers to weakly anonymous, anonymous and fully anonymous games as \textit{weakly symmetric}, \textit{weakly anonymous} and \textit{strongly anonymous games} respectively. The reason for this is the author finds using the symmetric terminology in the context of anonymity rather confusing when it is already the convention to use the term symmetric for notions of symmetry/fairness. Further, since the anonymity notion that \cite{brandt2009symmetries} refer to as weakly symmetric is not the weakest of the three anonymity notions, the author has instead chosen to refer to them as simply anonymous, and so what \cite{brandt2009symmetries} refer to as weakly symmetric the author refers to as weakly anonymous. The author uses fully anonymous instead of strongly anonymous to be consistent with the terminology used for notions of symmetry/fairness.
 
@@ -312,10 +310,10 @@ Upon contacting the authors from \cite{DMaskin} in 2018, the author received a r
 
 The mistake was also pointed out independently by Vester in his 2012 Masters thesis \cite[Appendix B]{vester2012symmetric}, who also proved the statement in Theorem \ref{DMprop}. Theorem \ref{DMprop} does not appear in the author's honours thesis, a proof was first released by the author publicly with the first revision of this paper uploaded to the arXiv November 2013, see \cite[Version 1]{ham2018arxivversion}. Hence credit goes to Vester for first releasing a proof publicly, see \cite[Theorem 32]{vester2012symmetric}.
 
-Further, Tohm\'{e} and Viglizzo also proved the statement in Theorem \ref{DMprop} which they released in 2017, see \cite[Lemma 2.10]{ViglizzoarXiv}, however do not appear to have realised that the conditions in \cite[Defintion 7]{DMaskin} were unintentionally stronger than intended.
+Further, Tohm\'{e} et al. also proved the statement in Theorem \ref{DMprop} which they released in 2017, see \cite[Lemma 2.14]{tohme2019structural}.
 
 \subsection{Notions of Fairness} \label{subsec:labeldepnotionsoffairness}
-Interestingly, fairness has not appeared much in the game theory literature. Here we review where the term fair has appeared, introduce several new notions of fairness and begin examining how they relate to one another. Note that we will revisit these notions of fairness several times through the remainder of the paper.
+Interestingly, fairness has not appeared much in the game theory literature. Here we review where the term fair has appeared, introduce several new notions of fairness and begin examining how they relate to one another. Note that we will revisit these notions of fairness several times throughout the remainder of the paper.
 
 \begin{definition}
 	A $2$-player zero-sum game is \textit{fair} \cite[17.11, 28.1, 28.2]{VNM} if its value is $0$.
@@ -333,14 +331,18 @@ Interestingly, fairness has not appeared much in the game theory literature. Her
 		\item \textit{very-weakly-fair} if $\underline{u}_i = \underline{u}_j$ and $\overline{u}_i = \overline{u}_j$ for all $i, j \in N$;
 		\item \textit{weakly-fair} if $\underline{u}_i = \overline{u}_i = \underline{u}_j = \overline{u}_j$ for all $i, j \in N$; 
 		\item \textit{fair} if $\underline{u}_i = \overline{u}_i = 0$ for all $i \in N$;
-		\item \textit{standard strictly fair} if utility values are preserved under a transitive subgroup of the player permutations;
-		\item \textit{fully strictly fair} if utility values are preserved under all player permutations;
+		\item \textit{standard fair} if utility values are preserved under a transitive subgroup of the player permutations;
+		\item \textit{fully fair} if utility values are preserved under all player permutations;
 		\item \textit{standard ordinally fair} if there is a transitive subgroup of player permutations that preserve preferences over pure strategy profiles;
 		\item \textit{fully ordinally fair} if all player permutations preserve preferences over pure strategy profiles;
 		\item \textit{standard cardinally fair} if there is a transitive subgroup of player permutations that preserve preferences over mixed strategy profiles; and
 		\item \textit{fully cardinally fair} if all player permutations preserve preferences over mixed strategy profiles.
 	\end{enumerate}
 \end{definition}
+
+Note that ordinally symmetric games have been examined by Cao et al \cite{cao2018symmetric, cao2019ordinally}. Our definitions of standard and fully fair match up with our definitions of standard and fully symmetric games, a similar situation holds for the ordinal and cardinal definitions for ordinal and cardinal generalisations of our symmetric definitions to capture symmetry of payoff structure rather than symmetry of payoffs directly. 
+
+An alternative way some people view fairness is requiring players reach equal payoffs under reasonable notions of perfect play. The author feels this would be more akin to the definition of symmetry in \cite{DMaskin}.
 
 \begin{proposition} \label{prop:standsymgamesaremaxminandminmaxfair}
 	If a (zero-sum) game $\Gamma = (N, A, u)$ is standard symmetric then it is maximin fair and minimax fair.

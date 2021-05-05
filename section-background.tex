@@ -45,7 +45,7 @@
 	
 	A \textit{strategic-form game}, or just \textit{game} when contextually unambiguous, consists of a set $N = \{1, \ldots, n\}$ of $n \geq 2$ \textit{players}, or \textit{player names}, and for each player $i \in N$, a non-empty set $A_i$ of \textit{strategies} and a \textit{utility function} $u_i:A\rightarrow\mathbb{R}$, where $A$ denotes the set of \textit{strategy profiles} $\times_{i \in N}A_i$. We denote such a game as the triple $(N, A, u)$, where $u = (u_i)_{i \in N}$. If there exists $m \in \mathbb{Z}^+$ such that $|A_i| = m$ for all $i \in N$ then $(N, A, u)$ is called an $m$-\textit{strategy} game. A game $(N, A, u)$ is \textit{finite} when both $N$ is finite and $A_i$ is finite for all $i \in N$. 
 	
-	In this paper we will only concern ourselves with finite games, consequently all player sets and pure strategy sets are implicitly finite. It is noted in Mas-Collel, Whinston and Green \cite[Proposition 3.C.1]{Mas1995microeconomic} that for a set $X$ any rational preference relation may be described by some utility function, it is also worth checking Sections 3.B and 3.C, especially the definition of a rational preference relation (Definition 3.B.1). This would be a useful place to begin when trying to explore notions of symmetry and fairness for non-finite games (so a [possibly] non-finite number of players and/or [possibly] non-finite strategy sets, with at least one non-finite set involved). %watch out for Can't Or/Cantor and Kant/Can't, what's the diagonal length of a triangle with straight side lengths of 1? Why did the chicken walk down the mobius strip? All pointed out independently and most likely originally by the actual Nick Ham, who typed this comment.
+	In this paper we will only concern ourselves with finite games, consequently all player sets and pure strategy sets are implicitly finite. It is noted in Mas-Collel, Whinston and Green \cite[Proposition 3.C.1]{Mas1995microeconomic} that for a set $X$ any rational preference relation may be described by some utility function, it is also worth checking Sections 3.B and 3.C, especially the definition of a rational preference relation (Definition 3.B.1). This would be a useful place to begin when trying to explore notions of symmetry and fairness for non-finite games (so a [possibly] non-finite number of players and/or [possibly] non-finite strategy sets, with at least one non-finite set involved). 
 	
 	Note that the strategy profiles, and consequently also the utility functions, of a game have an implicit ordering of the players. We refer to the place of each player in this order as their \textit{position}. For games when the player names are $\{1, \ldots, n\}$, unless otherwise specified, the names and positions coincide.
 	
@@ -214,13 +214,7 @@
 	
 	To simplify notation for the remainder of the paper, for each $\sigma \in \nabla(A)$ and $s \in A$ we shall denote $f(\sigma)(s)$ as $\sigma(s)$. 
 	
-	%Given a game $\Gamma = (N, A, u)$, for each player $i \in N$, the \textit{mixed strategies for player $i$}, which we denote by $\Delta(A_i)$, are the probability distributions over $A_i$, ie. $\Delta(A_i) = \{\sigma_i \in [0,1]^{A_i}: \Sigma_{s_i \in A_i} \sigma_i(s_i) = 1\}$. The \textit{mixed strategy profiles}, which we denote by $\Delta(A)$, are $\times_{i \in N}\Delta(A_i)$.
-	
-	%Need to argue $\Delta(A) = \{\sigma \in [0,1]^A: \Sigma_{s \in A}\sigma(s) = 1\} \cong \times_{i \in N}\Delta(A_i)$ equipped with for each $\sigma \in \times_{i \in N}\Delta(A_i)$, $\sigma(s) = \prod_{i \in N}\sigma_i(s_i)$ for all $s \in A$.
-	
-	Need to do expected utility. For each player $i \in N$, the domain for their utility function can be extended linearly from $A$ to $\nabla(A)$ with $\textswab{u}_i(\sigma) = \Sigma_{s \in A}\sigma(s)u_i(s)$ for all $\sigma \in \nabla(A)$.
-	
-	What about ${\nabla(A)}_{-i} = \times_{j \in N-\{i\}}\Delta(A_j)$? Do we have ${\nabla(A)}_{-i} \subset \Delta(A_{-i})$? Also given $i \in N$ and $\sigma \in \nabla(A)$, we have $\sigma_{-i} = (\sigma_1, \ldots, \sigma_{i-1}, \sigma_{i+1}, \ldots, \sigma_n) \in {\nabla(A)}_{-i}$.
+	For each player $i \in N$, the domain for their utility function can be extended linearly from $A$ to $\nabla(A)$ with $\textswab{u}_i(\sigma) = \Sigma_{s \in A}\sigma(s)u_i(s)$ for all $\sigma \in \nabla(A)$.
 	
 	A \textit{pure strategy Nash equilibrium} is a strategy profile $s \in A$ where for each $i \in N$, $u_i(s_i, s_{-i}) \geq u_i(s_i', s_{-i})$ for all $s_i' \in A_i$. For example, in Example \ref{fullsymeg} the profile $(b,b,b)$ is a pure strategy Nash equilibrium.
 	
@@ -268,9 +262,7 @@
 		Given a $2$-player zero-sum game $(\{1, 2\}, A_1 \times A_2, (u_1, u_2))$, the maximin and minimax values for each player are equal to minus the minimax and maximin values for the other player.
 		
 		\begin{proof}
-			The following is basically rephrased from what is on (I think from memory) Wikipedia.
-		
-			This may be seen by noting that $u_1(s) = -u_2(s)$, and $u_2(s) = -u_1(s)$, for all $s \in A$. Hence:
+			The following is rephrased from various different sources. This may be seen by noting that $u_1(s) = -u_2(s)$, and $u_2(s) = -u_1(s)$, for all $s \in A$. Hence:
 			\begin{align*}
 				\text{(i) } \underline{u}_1 = \max_{\sigma_1 \in \Delta(A_1)}\min_{\sigma_2 \in \Delta(A_2)} u_1(\sigma_1, \sigma_2) &= \max_{\sigma_1 \in \Delta(A_1)}\min_{\sigma_2 \in \Delta(A_2)} -u_2(\sigma_1, \sigma_2) \\
 				&= -\min_{\sigma_1 \in \Delta(A_1)}\max_{\sigma_2 \in \Delta(A_2)} u_2(\sigma_1, \sigma_2) = -\overline{u}_2; \text{ and} \\
@@ -280,54 +272,9 @@
 		\end{proof}
 	\end{proposition}
 	
-	Now show each player's maximin value and minimax value are equal for $2$-player zero-sum games. 
-	
 	\begin{proposition} \label{prop:2pzsminmax=maxmin}
-		Given a $2$-player zero-sum game $\Gamma = (\{1, 2\}, A_1\times A_2, (u_1, u_2))$, the maximin and minimax values for each player are equal. Ie. $\underline{u}_i = \overline{u}_i$ for all $i \in \{1, 2\}$.
-		
-		\begin{proof}
-			There is a number of proofs for this throughout the literature and on the internet, one shall be added and cited it later. 
-		\end{proof}
+		\cite{VNM} Given a $2$-player zero-sum game $\Gamma = (\{1, 2\}, A_1\times A_2, (u_1, u_2))$, the maximin and minimax values for each player are equal. Ie. $\underline{u}_i = \overline{u}_i$ for all $i \in \{1, 2\}$.
 	\end{proposition}
-	
-	\begin{proposition} \label{prop:2pzsminmaxi=-minmaxj}
-		Given a zero-sum game $(N, A, u)$, for each $i \in N$, $(\set{i, -i}, A_i\times{A_{-i}}, u^*_i\times u^*_{-i})$ is a $2$-player zero-sum game where $u^*_i = u$ and $u^*_{-i} = \Sigma_{j \in N-\{i\}}u_i$. Since what we would want for $A^*_{-i}$ is just $A_{-i}$ we do not bother complicating our notation further, similarly with $A_i$. 
-		
-		\begin{proof}
-			Note that we have two players, $i$ and $-i$, each with a finite number of strategies, and for each $s \in A_i$ and $s_{-i} \in A_{-i}$ we have $u^*_i(s) = u_i(s)$ and $u^*_{-i}(s) = \Sigma_{j \in N-\{i\}} u_i(s)$, hence $u^*_i(s) + u^*_{-i}(s) = u_1(s) + \ldots + u_n(s) = 0$.
-		\end{proof}
-	\end{proposition}
-	
-	It will be of interest from the theory point of view to establish, in the context of ($n$-person) zero-sum games, whether each player's maximin and minimax values must be equal. An attempt at trying to establish that they are equal is below, 
-	
-	\begin{puzzle}
-		Given a zero-sum game $\Gamma = (N, A, u)$, are each player's maximin value and minimax value equal (it is difficult to work out what the actual puzzles even are here, proceed with \textbf{caution}!):
-		\begin{enumerate}
-			\item under what conditions (possibly all/none) do we have $\underline{u}^*_i = \underline{u}^*_{-i}$ and $\overline{u}^*_i = \overline{u}^*_{-i}$?;
-			\item under what conditions (possibly all/none) do we have $\underline{u}_i = \overline{u}_i$ for all $i \in N$?; and
-			\item under what conditions (possibly all/none) do we have $\underline{u}_i = u_{-i}$
-		\end{enumerate}
-		
-		\begin{proof}
-			If $\Gamma$ has only two players then the result follows from Proposition \ref{prop:2pzsminmax=maxmin}, so suppose $\Gamma$ has more than two players.
-		
-			Given a zero-sum game $\Gamma = (N, A, u)$, for each player $i \in N$ let $\Gamma' = (\{i, -i\}, A_i\times{A_{-i}}, (u^*_i, u^*_{-i}))$ be the $2$-player zero-sum game where $u^*_i = u_i$ and $u^*_{-i} = \Sigma_{j \in N-\{i\}}u_j$, ie. $u^*_{-i}(s) = \Sigma_{j \in N-\{i\}}u_j(s)$ for all $s \in A$.
-			
-			For each $i \in N$, noting that it follows from Propositions \ref{prop:2pzsminmax=maxmin} and \ref{prop:2pzsminmaxi=-minmaxj} that $\underline{u}^*_i = \overline{u}^*_i = - \overline{u}^*_i = - \underline{u}^*_i$. %, we have $\underline{u}_i = \underline{u}^*_i = \overline{u}^*_i = \overline{u}_i$.
-			
-			Hence puzzle (ii) is fine, ie. we do know that $\underline{u}^*_i = \overline{u}^*_i = \overline{u}^*_{-i} = \underline{u}^*_{-i}$.
-			
-			It remains to show $\underline{u}_i = \underline{u}^*_i$ and $\overline{u}^*_i = \overline{u}_i$? Ie. need to prove/show/establish whether:
-			
-			\[ \Rightarrow
-				\begin{cases}
-					\displaystyle \underline{u}_i = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \nabla(A)_{-i}} u_i(\sigma_i, \sigma_{-i}) = \max_{\sigma_i \in \Delta(A_i)}\min_{\sigma_{-i} \in \Delta(A_{-i})} u^*_i(\sigma_i, \sigma_{-i}) = \underline{u}^*_i; \text{ and} & \\
-					\displaystyle \overline{u}^*_i = \min_{\sigma_i \in \Delta(A_i)}\max_{\sigma_{-i} \in \nabla(A)_{-i}} u_i(\sigma_i, \sigma_{-i}) = \min_{\sigma_i \in \Delta(A_i)}\max_{\sigma_{-i} \in \Delta(A_{-i})} u^*_i(\sigma_i, \sigma_{-i}) = \overline{u}_i. &
-				\end{cases}
-			\]
-		\end{proof}
-	\end{puzzle}
-	
 	
 	We denote the subgroup relation as $\leq$, the group generated by a subset $H$ of a group $G$ as $\langle{H}\rangle$, the group of permutations on a non-empty set $X$ as $S_X$, and the subset of transpositions on $X$ as $T_X$. The reader is reminded that the permutations on $X$ are equivalent to the bijections from $X$ to itself, henceforth we will refer to them interchangeably.
 	
