@@ -45,6 +45,13 @@
 \let\oldproofname=\proofname
 \renewcommand{\proofname}{\rm\bf{\oldproofname}}
 
+\usepackage{setspace, tocloft}
+\renewcommand{\cftsecafterpnum}{\hspace*{7.5em}}
+\renewcommand{\cftsubsecafterpnum}{\hspace*{7.5em}}
+\setlength{\cftsecindent}{7em}
+\setlength{\cftsubsecindent}{7em}
+\setlength{\cftsubsubsecindent}{7em}
+
 %theorem style to be used..
 \newtheoremstyle{paper}
 {3pt}% space below
@@ -88,7 +95,9 @@
     		91B16. %Utility theory
     \end{abstract}
     
-    \tableofcontents
+    \begin{center}
+    	\tableofcontents
+    \end{center}
     
     \input{section-intro.tex}
     \input{section-background.tex}
